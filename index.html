@@ -1,0 +1,1624 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Atlas des spés</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+/* Une colonne de 720px, beaucoup d’air, du détail qui se déplie. Une seule couleur d’accent (hématoxyline) ;
+   les trois autres teintes de la coloration HES ne servent qu’à distinguer les spécialités comparées. */
+:root {
+  --bg: #f6f5f9;
+  --surface: #ffffff;
+  --ink: #1d1b26;
+  --muted: #666379;
+  --line: #e2e0ea;
+  --soft: #eeecf4;
+  --c1: #4a3d90;
+  --c2: #bf3a69;
+  --c3: #9a6306;
+  --c4: #1c7170;
+  --good: #1f7a4d;
+  --on-accent: #ffffff;
+  --cyto: #f3cddb;
+  --nuc: #6b5bb5;
+  --nuc-odd: #2c2266;
+  --scrim: rgba(20, 16, 40, 0.38);
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14131b; --surface: #1c1a26; --ink: #ecebf3; --muted: #a6a3ba; --line: #2f2c3e; --soft: #252233;
+    --c1: #a99cf2; --c2: #f07ea6; --c3: #e0b04e; --c4: #5cc3c0; --good: #6fd29f; --on-accent: #14131b;
+    --cyto: #4a2536; --nuc: #9d8fe6; --nuc-odd: #e6e0ff; --scrim: rgba(0, 0, 0, 0.55);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14131b; --surface: #1c1a26; --ink: #ecebf3; --muted: #a6a3ba; --line: #2f2c3e; --soft: #252233;
+  --c1: #a99cf2; --c2: #f07ea6; --c3: #e0b04e; --c4: #5cc3c0; --good: #6fd29f; --on-accent: #14131b;
+  --cyto: #4a2536; --nuc: #9d8fe6; --nuc-odd: #e6e0ff; --scrim: rgba(0, 0, 0, 0.55);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+body.locked { overflow: hidden; }
+h1, h2, h3 { font-family: var(--display); margin: 0; line-height: 1.15; text-wrap: balance; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2rem, 6vw, 2.7rem); font-weight: 700; }
+h2 { font-size: clamp(1.4rem, 4.2vw, 1.75rem); font-weight: 700; }
+h3 { font-size: 1.1rem; font-weight: 700; }
+p { margin: 0; }
+ul, ol { margin: 0; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:disabled { cursor: default; }
+:focus-visible { outline: 2px solid var(--c1); outline-offset: 2px; }
+.muted { color: var(--muted); }
+.small { font-size: 0.85rem; }
+.num { font-variant-numeric: tabular-nums; }
+.kicker { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.lead { font-size: 1.08rem; color: var(--muted); max-width: 58ch; }
+.big { font-family: var(--display); font-size: 1.35rem; font-weight: 700; }
+.good { color: var(--good); font-weight: 600; }
+
+/* Barre du haut */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); border-bottom: 1px solid var(--line); }
+.topin { max-width: 720px; margin: 0 auto; padding: 10px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { background: none; border: 0; padding: 0; display: inline-flex; align-items: center; gap: 9px; font-family: var(--display); font-weight: 700; font-size: 1.05rem; }
+.brand i { width: 14px; height: 14px; border-radius: 50%; background: var(--cyto); box-shadow: inset 0 0 0 4px var(--cyto), inset 0 0 0 14px var(--c1); }
+.nav { display: flex; gap: 2px; }
+.nav button { background: none; border: 0; padding: 8px 10px; font-size: 0.92rem; color: var(--muted); border-radius: 8px; }
+.nav button:hover { color: var(--ink); }
+.nav button[aria-current="page"] { color: var(--ink); font-weight: 600; background: var(--soft); }
+
+/* Colonne */
+.wrap { max-width: 720px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 96px; display: grid; gap: 28px; }
+.wrap > * { min-width: 0; }
+.hero { display: grid; gap: 12px; padding-block: 12px 4px; }
+.hero.small { padding-top: 4px; }
+.block { display: grid; gap: 14px; }
+.center { display: grid; gap: 16px; padding-block: 24px; }
+.foot { font-size: 0.82rem; color: var(--muted); border-top: 1px solid var(--line); padding-top: 16px; }
+
+/* Listes en lignes */
+.rows { display: grid; border-top: 1px solid var(--line); }
+.row { display: grid; grid-template-columns: 1fr auto auto; gap: 14px; align-items: center; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--line); padding: 16px 4px; }
+.row:hover .arrow { transform: translateX(3px); color: var(--c1); }
+.rowmain { display: grid; gap: 2px; min-width: 0; }
+.rowmain b { font-size: 1.05rem; }
+.rows.compact .row { padding: 11px 4px; }
+.rows.compact .rowmain b { font-size: 1rem; font-weight: 600; }
+.meta { font-size: 0.85rem; color: var(--muted); white-space: nowrap; }
+.arrow { color: var(--muted); transition: transform .15s, color .15s; }
+.resume { display: flex; justify-content: space-between; align-items: center; gap: 12px; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px 16px; }
+.resume > span:first-child { display: grid; gap: 2px; }
+
+/* Boutons et contrôles */
+.btn { border: 0; border-radius: 999px; padding: 11px 20px; font-weight: 600; background: var(--c1); color: var(--on-accent); }
+.btn.ghost { background: none; color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.btn:disabled { opacity: .4; }
+.link { background: none; border: 0; padding: 4px 0; color: var(--muted); font-size: 0.92rem; justify-self: start; }
+.link:hover { color: var(--ink); }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.actions.sticky { position: sticky; bottom: 0; padding-block: 12px calc(12px + env(safe-area-inset-bottom, 0px)); background: linear-gradient(to top, var(--bg) 70%, transparent); }
+.x { border: 0; background: var(--soft); width: 26px; height: 26px; border-radius: 50%; line-height: 1; padding: 0; color: var(--muted); flex: none; }
+.x.big { width: 36px; height: 36px; font-size: 1.2rem; }
+.search { width: 100%; padding: 11px 14px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { display: inline-block; font-size: 0.8rem; background: var(--soft); border-radius: 999px; padding: 3px 10px; }
+.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 5px 12px; font-size: 0.88rem; }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip:disabled { opacity: .4; }
+.chip.add { border-style: dashed; }
+.seg { display: inline-flex; flex-wrap: wrap; gap: 2px; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--surface); }
+.seg button { border: 0; background: none; border-radius: 999px; padding: 6px 12px; font-size: 0.88rem; color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.seg.wide { display: flex; }
+.seg.wide button { flex: 1 1 auto; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px; display: grid; gap: 14px; min-width: 0; }
+.filters { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 2px; }
+.filters .chip { white-space: nowrap; }
+.famgroups { display: grid; gap: 14px; }
+.famgroup { display: grid; gap: 6px; }
+.famblock { display: grid; gap: 6px; margin-bottom: 20px; }
+.empty { color: var(--muted); border: 1px dashed var(--line); border-radius: 12px; padding: 20px; text-align: center; }
+.notes { display: grid; gap: 8px; }
+.note { font-size: 0.88rem; color: var(--muted); border-left: 2px solid var(--c3); padding-left: 12px; }
+
+/* Quiz */
+.quiz { display: grid; gap: 18px; }
+.qtop { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.count { font-size: 0.85rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.bar { height: 4px; border-radius: 4px; background: var(--soft); overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--c1); transition: width .3s ease; }
+.qtext { font-size: clamp(1.4rem, 4.6vw, 1.85rem); }
+.opts { display: grid; gap: 8px; }
+.opts.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.opts.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.opt { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: center; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 13px 14px; transition: border-color .12s, background .12s; }
+.opt:hover:not(:disabled) { border-color: var(--c1); }
+.opts.two .opt, .opt.center { grid-template-columns: 1fr; text-align: center; }
+.opt .letter { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; font-size: 0.8rem; font-weight: 600; background: var(--soft); color: var(--muted); }
+.opt[aria-pressed="true"] { border-color: var(--c1); box-shadow: inset 0 0 0 1px var(--c1); }
+.opt[aria-pressed="true"] .letter { background: var(--c1); color: var(--on-accent); }
+
+/* Résultats */
+.tops { display: grid; gap: 10px; }
+.topcard { display: grid; grid-template-columns: 34px 1fr auto; gap: 14px; align-items: center; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 16px; }
+.topcard:hover { border-color: var(--c1); }
+.topcard .rank { font-family: var(--display); font-size: 1.5rem; font-weight: 700; color: var(--c1); }
+.topmain { display: grid; gap: 4px; min-width: 0; }
+.topmain b { font-size: 1.12rem; }
+.nick { color: var(--muted); font-style: italic; }
+.reasons { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.score { display: flex; align-items: baseline; gap: 2px; }
+.score b { font-family: var(--display); font-size: 1.35rem; }
+details.more summary { cursor: pointer; color: var(--muted); font-size: 0.92rem; padding: 6px 0; }
+details.more[open] summary { margin-bottom: 6px; }
+.strat { list-style: none; padding: 0; display: grid; gap: 14px; }
+.strat li { display: grid; gap: 2px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.strat li:last-child { border-bottom: 0; padding-bottom: 0; }
+.strat .read { color: var(--c1); font-weight: 500; }
+
+/* Dimensions */
+.dims { display: grid; gap: 12px; }
+.dim { display: grid; grid-template-columns: 9.5rem 1fr; gap: 14px; align-items: end; }
+.dim .lab { font-size: 0.9rem; font-weight: 600; padding-bottom: 2px; }
+.track { position: relative; height: 34px; }
+.poles { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--muted); }
+.track .line { position: absolute; left: 0; right: 0; top: 25px; height: 2px; background: var(--line); border-radius: 2px; }
+.track .tick { position: absolute; left: 50%; top: 20px; width: 1px; height: 12px; background: var(--line); }
+.dot { position: absolute; top: 19px; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: var(--c1); }
+.dot.ring { background: var(--surface); box-shadow: inset 0 0 0 2px var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.88rem; align-items: center; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend .dot { position: static; margin: 0; }
+.youkey { width: 2px; height: 14px; background: var(--ink); display: inline-block; }
+
+/* Comparateur */
+.picked { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pchip { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--c); background: var(--surface); border-radius: 999px; padding: 5px 6px 5px 10px; font-size: 0.92rem; font-weight: 500; }
+.pchip .dot { position: static; margin: 0; width: 10px; height: 10px; }
+.picker { gap: 12px; }
+.picker #k-list { max-height: 300px; overflow-y: auto; }
+.scrollx { overflow-x: auto; }
+table.glance { border-collapse: collapse; width: 100%; min-width: 480px; font-size: 0.92rem; }
+table.glance th, table.glance td { text-align: left; vertical-align: top; padding: 9px 10px; border-bottom: 1px solid var(--line); }
+table.glance thead th { font-weight: 700; }
+table.glance tbody th { color: var(--muted); font-weight: 500; font-size: 0.82rem; width: 6.5rem; }
+table.glance tr:last-child th, table.glance tr:last-child td { border-bottom: 0; }
+.dimlist { display: grid; gap: 16px; }
+.cdim { display: grid; gap: 4px; }
+.cdim b { font-size: 0.92rem; }
+.lanes { position: relative; display: grid; gap: 5px; }
+.lanes .poles { margin-bottom: 2px; }
+.lane { position: relative; height: 14px; }
+.lane::before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 2px; background: var(--line); }
+.lane .dot { top: 0; width: 14px; height: 14px; box-shadow: 0 0 0 2px var(--surface); }
+.lanes .you { position: absolute; top: 20px; bottom: -3px; width: 2px; margin-left: -1px; background: var(--ink); border-radius: 2px; }
+.tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--line); }
+.tabs.scroll { overflow-x: auto; }
+.tabs button { background: none; border: 0; border-bottom: 2px solid transparent; padding: 9px 12px; color: var(--muted); white-space: nowrap; margin-bottom: -1px; }
+.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--c1); font-weight: 600; }
+.cols { display: grid; gap: 16px; }
+.cols.n2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.cols.n3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cols.n4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.colitem { display: grid; gap: 6px; align-content: start; font-size: 0.95rem; }
+ul.guide { padding-left: 18px; display: grid; gap: 6px; }
+
+/* Fiche */
+.sheet { position: fixed; inset: 0; z-index: 30; display: grid; place-items: end center; background: var(--scrim); }
+.sheet[hidden] { display: none; }
+.sheetpanel { background: var(--surface); width: min(720px, 100%); max-height: 90vh; overflow-y: auto; border-radius: 18px 18px 0 0; padding: 22px 20px calc(24px + env(safe-area-inset-bottom, 0px)); display: grid; gap: 16px; outline: none; }
+.sheethead { display: flex; justify-content: space-between; gap: 16px; align-items: start; }
+.sheethead > div { display: grid; gap: 6px; }
+.sheetbody { display: grid; gap: 14px; min-height: 180px; align-content: start; }
+dl.facts { display: grid; gap: 14px; margin: 0; }
+dl.facts dt { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+dl.facts dd { margin: 2px 0 0; }
+.kv { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+.kv > span { color: var(--muted); font-size: 0.9rem; }
+.kv.col { flex-direction: column; justify-content: start; }
+@media (min-width: 760px) {
+  .sheet { place-items: center; }
+  .sheetpanel { border-radius: 18px; max-height: 86vh; }
+}
+
+/* Jeux */
+.game { gap: 16px; }
+.gdots { display: flex; gap: 6px; }
+.gdots i { width: 22px; height: 4px; border-radius: 4px; background: var(--line); }
+.gdots i.done { background: var(--c1); opacity: .45; }
+.gdots i.on { background: var(--c1); }
+.steps { display: grid; gap: 10px; padding-left: 20px; }
+.steps li { display: grid; gap: 1px; }
+.gfoot { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.clues { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.clue { min-height: 104px; display: grid; gap: 6px; align-content: start; text-align: left; background: var(--surface); border: 1px dashed var(--line); border-radius: 12px; padding: 12px; font-size: 0.92rem; }
+button.clue:hover { border-color: var(--c1); border-style: solid; }
+.clue.open { background: var(--soft); border-style: solid; border-color: transparent; }
+.basket { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; }
+.basket b { font-family: var(--display); font-size: 1.3rem; }
+.choice2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.bigchoice { display: grid; gap: 4px; justify-items: start; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+.bigchoice:hover { border-color: var(--c1); }
+.bigchoice b { font-family: var(--display); font-size: 2.4rem; line-height: 1.1; }
+.arena { position: relative; height: 280px; background: var(--soft); border-radius: 14px; overflow: hidden; touch-action: manipulation; }
+.target { position: absolute; border: 0; padding: 0; border-radius: 50%; background: var(--c2); box-shadow: 0 0 0 6px color-mix(in srgb, var(--c2) 25%, transparent); }
+.seq { font-family: var(--display); font-size: clamp(1.6rem, 6vw, 2.2rem); font-weight: 700; letter-spacing: 0.02em; }
+.slide { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px; padding: 14px; background: var(--soft); border-radius: 50% / 18%; max-width: 440px; }
+.cell { aspect-ratio: 1; border: 0; padding: 0; border-radius: 50%; background: var(--cyto); position: relative; }
+.cell::after { content: ""; position: absolute; width: var(--s); height: var(--s); left: var(--x); top: var(--y); transform: translate(-50%, -50%); border-radius: 50%; background: var(--nuc); }
+.cell.odd::after { background: var(--nuc-odd); border-radius: 46% 54% 40% 60% / 55% 42% 58% 45%; }
+.cell:hover { box-shadow: 0 0 0 2px var(--c1); }
+.jars { display: grid; gap: 10px; }
+.jar { display: grid; grid-template-columns: 1fr auto; gap: 8px 14px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; }
+.stepper { display: inline-flex; align-items: center; gap: 10px; }
+.stepper button { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); font-size: 1.1rem; line-height: 1; }
+.stepper button:disabled { opacity: .35; }
+.stepper b { min-width: 1.2em; text-align: center; font-size: 1.1rem; }
+.pips { grid-column: 1 / -1; display: flex; gap: 4px; min-height: 8px; }
+.pips i { width: 18px; height: 8px; border-radius: 3px; background: var(--c1); }
+
+.staged { display: grid; gap: 8px; }
+.stagerow { display: grid; grid-template-columns: 1fr auto auto; gap: 8px 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; }
+.stagename { font-weight: 600; }
+
+/* Phone */
+@media (max-width: 560px) {
+  .wrap { padding-inline: 16px; }
+  .topin { padding-inline: 16px; }
+  .nav button { padding: 8px 7px; font-size: 0.86rem; }
+  .brand span { display: none; }
+  .row { grid-template-columns: 1fr auto; }
+  .row .meta { display: none; }
+  .dim { grid-template-columns: 1fr; gap: 0; }
+  .clues { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .opts.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cols.n2, .cols.n3, .cols.n4 { grid-template-columns: 1fr; }
+  .bigchoice b { font-size: 2rem; }
+  .stagerow { grid-template-columns: 1fr auto; }
+  .stagerow .seg { grid-column: 1 / -1; grid-row: 2; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+</style>
+<header class="top">
+  <div class="topin">
+    <button class="brand" data-act="home" type="button"><i aria-hidden="true"></i><span>Atlas des spés</span></button>
+    <nav class="nav" aria-label="Navigation principale">
+      <button type="button" data-act="home">Quiz</button>
+      <button type="button" data-act="catalog">Les 44 spés</button>
+      <button type="button" data-act="compare">Comparer</button>
+    </nav>
+  </div>
+</header>
+<main id="view" class="wrap"></main>
+<div id="sheet" class="sheet" hidden>
+  <div id="sheet-panel" class="sheetpanel" role="dialog" aria-modal="true" aria-labelledby="sheet-title" tabindex="-1"></div>
+</div>
+<script>
+/* ===== Données ===== */
+const DIMS = [
+  { c: "TEM", n: "Tempo", neg: "Crise", pos: "Maîtrise" },
+  { c: "ARC", n: "Arc du récit", neg: "Épisode", pos: "Saga" },
+  { c: "PRE", n: "Présence", neg: "Face-à-face", pos: "Coulisses" },
+  { c: "OUT", n: "Outil", neg: "La main", pos: "La tête" },
+  { c: "INC", n: "Incertitude", neg: "Énigme", pos: "Résolution" },
+  { c: "FOC", n: "Focale", neg: "Territoire", pos: "Panorama" },
+  { c: "ECH", n: "Échelle", neg: "Individu", pos: "Population" },
+  { c: "EMO", n: "Charge émotionnelle", neg: "Exposition", pos: "Distance" }
+];
+
+const FAMILIES = {
+  Sprinteurs: { n: "Les Sprinteurs", d: "Crise, épisode, décision rapide. Ton action doit compter tout de suite." },
+  Artisans: { n: "Les Artisans", d: "La main, le territoire, le résultat visible. Tu penses avec tes mains." },
+  Hybrides: { n: "Les Hybrides", d: "Un organe, la tête et la main à parts égales. Tu refuses de choisir." },
+  Enqueteurs: { n: "Les Enquêteurs", d: "L’énigme et le raisonnement. Un problème difficile t’attire plus qu’il ne t’inquiète." },
+  Compagnons: { n: "Les Compagnons", d: "La saga et la relation. Tu préfères connaître les gens dans la durée." },
+  Lecteurs: { n: "Les Lecteurs de l’invisible", d: "Les coulisses, l’œil, la précision. Tu vois ce que les autres ne voient pas." },
+  Architectes: { n: "Les Architectes", d: "La population et le système. Tu veux changer la règle plutôt que le cas." }
+};
+
+const PH = "Pharmacologie médicale / thérapeutique";
+const PAL = "Soins palliatifs";
+const EXP = "Expertise médicale – préjudice corporel";
+
+/* Profils (TEM ARC PRE OUT INC FOC ECH EMO) et portraits : premier jet à dire d’expert.
+   Durée, co-DES, options, FST et points « guide » : Guide Futur Interne ISNI 2025-2026 (paraphrasé). */
+const SPECS = [
+  { k: "urg", n: "Médecine d’urgence", s: "Urgences", f: "Sprinteurs", p: [-2,-2,-1,0,-1,2,-1,-1],
+    nick: "Le pompier philosophe",
+    quot: "Tri, décisions rapides avec peu d’informations, SMUR, une grande variété de situations en une seule garde.",
+    heur: "Cent histoires courtes, l’adrénaline, le travail d’équipe dans la crise.",
+    envers: "La saturation des services, le rythme des gardes, peu de suivi des patients.",
+    idee: "« On oriente sans soigner. » Les urgentistes gèrent eux-mêmes les situations les plus graves des premières heures.",
+    d: 4, co: "", opt: [], fst: [PH, "Urgences pédiatriques", "Médecine du sport", "Médecine en situation de guerre ou SSE"],
+    g: ["Toutes les pathologies à leur stade initial, avec échographie et gestes (sutures, ponctions, réductions).",
+        "Exercice modulable : urgences, SAMU/SMUR, régulation, préhospitalier, rapatriement sanitaire.",
+        "Le guide insiste sur des journées qui ont une fin : la relève est assurée et les 48 h par semaine globalement respectées."] },
+  { k: "mir", n: "Médecine intensive-réanimation", s: "Réanimation (MIR)", f: "Sprinteurs", p: [-2,-1,0,0,-1,2,-2,-2],
+    nick: "Le funambule",
+    quot: "Défaillances d’organes, ventilation, techniques invasives, et beaucoup de discussions avec les familles.",
+    heur: "Ramener à la vie des patients qu’on croyait perdus.",
+    envers: "La mort fréquente, les décisions de limitation des soins, les gardes.",
+    idee: "« Des machines et des écrans. » La réanimation est aussi une médecine de l’éthique et de la parole.",
+    d: 5, co: "Anesthésie-réanimation", opt: ["Réanimation pédiatrique"], fst: ["Douleur", "Hygiène – prévention de l’infection", "Nutrition appliquée", PH, PAL],
+    g: ["Patients en état critique quels que soient leur âge ou leur pathologie : sepsis, chocs, comas, arrêts cardiaques.",
+        "Gestes avancés (intubation, ventilation, cathéters, dialyse) et communication soutenue avec les familles.",
+        "Le guide met en avant des équipes soudées et le respect du repos de garde."] },
+  { k: "ar", n: "Anesthésie-réanimation", s: "Anesthésie-réa", f: "Sprinteurs", p: [-1,-2,1,-1,1,1,-2,1],
+    nick: "Le pilote de ligne",
+    quot: "Bloc opératoire, consultations d’anesthésie, gestes techniques, réanimation, prise en charge de la douleur.",
+    heur: "La physiologie appliquée en direct, des procédures très maîtrisées, la variété des parcours.",
+    envers: "Une relation brève avec un patient endormi, des moments de crise rares mais intenses.",
+    idee: "« On endort et on lit le journal. » Le métier consiste à surveiller et corriger la physiologie en continu.",
+    d: 5, co: "Médecine intensive-réanimation", opt: ["Réanimation pédiatrique"], fst: ["Douleur", "Hygiène – prévention de l’infection", "Nutrition appliquée", PH, PAL],
+    g: ["Exercice varié entre bloc, réanimation, SAMU et douleur, à l’hôpital ou en libéral.",
+        "Un médecin d’interface entre médecine, soins critiques et péri-opératoire, souvent chef d’équipe.",
+        "Formation riche en simulation ; le guide évoque un rythme soutenu et une charge de travail importante."] },
+
+  { k: "ortho", n: "Chirurgie orthopédique et traumatologique", s: "Orthopédie", f: "Artisans", p: [0,-2,-1,-2,2,-2,-2,1],
+    nick: "Le charpentier",
+    quot: "Traumatologie en urgence et chirurgie programmée : prothèses, sport, rachis, main.",
+    heur: "Un résultat visible, mesurable, souvent rapide.",
+    envers: "Des journées longues, la traumatologie de garde, une exigence physique.",
+    idee: "« De la force brute. » Beaucoup de gestes sont fins et très planifiés.",
+    d: 6, co: "", opt: [], fst: ["Chirurgie en situation de guerre ou de catastrophe", "Médecine du sport", "Chirurgie de la main"],
+    g: ["Du polytraumatisé à la prothèse, la main, le sport ou la scoliose de l’adolescent.",
+        "Innovation forte : chirurgie assistée par ordinateur, robotique, prothèses sur mesure.",
+        "Une plateforme nationale d’enseignement a été mise en place pour les internes."] },
+  { k: "visc", n: "Chirurgie viscérale et digestive", s: "Chirurgie viscérale", f: "Artisans", p: [-1,-1,-1,-2,1,-1,-2,0],
+    nick: "Le pilier du bloc",
+    quot: "Urgences abdominales, cancérologie digestive, chirurgie de l’obésité, cœlioscopie et robotique.",
+    heur: "Opérer de A à Z et voir le patient repartir.",
+    envers: "Gardes chargées, complications post-opératoires à porter.",
+    idee: "« L’appendicite et la vésicule. » La cancérologie et la transplantation y sont très techniques.",
+    d: 6, co: "", opt: ["Endoscopie chirurgicale"], fst: ["Chirurgie en situation de guerre ou de catastrophe", "Nutrition appliquée"],
+    g: ["De l’appendicite à la transplantation hépatique, de la thyroïde au rectum.",
+        "Comprendre avant d’agir : scanner, RCP, explications aux patients. Le guide résume : un bon chirurgien digestif est d’abord un bon médecin.",
+        "Autonomie précoce des internes, des urgences jusqu’au bloc."] },
+  { k: "nch", n: "Neurochirurgie", s: "Neurochirurgie", f: "Artisans", p: [-1,-1,-1,-2,0,-2,-2,-1],
+    nick: "Le démineur",
+    quot: "Majoritairement du rachis, mais aussi tumeurs cérébrales, traumatismes crâniens, vasculaire.",
+    heur: "Des gestes à très haut enjeu dans un territoire d’une grande finesse.",
+    envers: "Des complications lourdes, une formation exigeante, des gardes.",
+    idee: "« On opère des cerveaux toute la journée. » Le rachis représente une large part de l’activité.",
+    d: 6, co: "", opt: ["Neurochirurgie pédiatrique"], fst: [],
+    g: ["Système nerveux central et périphérique : tumeurs, rachis, douleur, vasculaire.",
+        "Sous-spécialisation fréquente : fonctionnelle, vasculaire, neuro-oncologie, rachis.",
+        "Selon le guide, l’exercice privé est davantage centré sur la chirurgie du rachis."] },
+  { k: "ctcv", n: "Chirurgie thoracique et cardiovasculaire", s: "Chirurgie thoracique et CV", f: "Artisans", p: [-1,-1,0,-2,1,-2,-2,0],
+    nick: "L’horloger du cœur",
+    quot: "Pontages, valves, chirurgie du poumon, transplantations.",
+    heur: "Des interventions spectaculaires et un résultat souvent immédiat.",
+    envers: "Des opérations longues, des enjeux vitaux, la concurrence des techniques percutanées.",
+    idee: "« Une spécialité figée. » Elle évolue vite vers le mini-invasif.",
+    d: 6, co: "", opt: [], fst: ["Chirurgie en situation de guerre ou de catastrophe"],
+    g: ["Cœur, poumons et gros vaisseaux, chez l’adulte et l’enfant.",
+        "Essor du mini-invasif, de l’endovasculaire et de la robotique.",
+        "Un post-DES (assistanat ou clinicat) est obligatoire selon le guide."] },
+  { k: "plast", n: "Chirurgie plastique, reconstructrice et esthétique", s: "Chirurgie plastique", f: "Artisans", p: [1,-1,-2,-2,1,-1,-2,0],
+    nick: "Le sculpteur",
+    quot: "Reconstruction après cancer, brûlés, chirurgie de la main, chirurgie esthétique.",
+    heur: "Rendre une forme et une fonction, avec un impact sur l’image de soi.",
+    envers: "Des attentes des patients parfois difficiles à combler.",
+    idee: "« De l’esthétique de luxe. » La reconstruction est le cœur de la formation.",
+    d: 6, co: "", opt: [], fst: ["Chirurgie de la main"],
+    g: ["Peau, tissus mous et parois : tumeurs, brûlures, traumatismes, malformations, sein, face, main, esthétique.",
+        "Les praticiens se surspécialisent souvent dans une ou plusieurs branches.",
+        "Toutes les villes n’offrent pas toutes les branches (notamment la main) ; un post-DES est recommandé."] },
+  { k: "chped", n: "Chirurgie pédiatrique", s: "Chirurgie pédiatrique", f: "Artisans", p: [-1,-1,-2,-2,1,-1,-2,-1],
+    nick: "L’artisan des petits",
+    quot: "Malformations, urgences et traumatismes de l’enfant, chirurgie viscérale et orthopédique pédiatrique.",
+    heur: "Opérer un enfant et le voir grandir normalement.",
+    envers: "La charge émotionnelle des parents, des situations rares et graves.",
+    idee: "« De la chirurgie adulte en plus petit. » La physiologie et les pathologies sont très différentes.",
+    d: 6, co: "", opt: ["Chirurgie viscérale pédiatrique", "Orthopédie pédiatrique"], fst: [],
+    g: ["Du prématuré à l’adolescent, une pathologie dominée par les malformations.",
+        "En viscéral pédiatrique, l’urologie représente environ 60 % de l’activité selon le guide.",
+        "L’orthopédie pédiatrique compte plus de postes vacants que de chirurgiens formés."] },
+  { k: "uro", n: "Urologie", s: "Urologie", f: "Artisans", p: [0,0,-1,-2,1,-2,-2,1],
+    nick: "Le plombier de haute précision",
+    quot: "Cancers de la prostate, de la vessie et du rein, calculs, endoscopie, robotique, beaucoup de consultation.",
+    heur: "Un équilibre entre bloc et consultation, des techniques de pointe.",
+    envers: "Un volume important de consultations, des sujets intimes à aborder.",
+    idee: "« Des prostates. » L’urologie est une spécialité de cancérologie et de technologie.",
+    d: 6, co: "", opt: [], fst: ["Oncologie", "Médecine de la reproduction – andrologie"],
+    g: ["Cancérologie, andrologie, lithiase, transplantation, urologie fonctionnelle et pédiatrique.",
+        "Tendance au regroupement des urologues, chacun gardant un domaine d’expertise.",
+        "Moins de postes depuis la réforme : accès plus restreint, et situation tendue dans certaines régions."] },
+  { k: "orl", n: "Oto-rhino-laryngologie – chirurgie cervico-faciale", s: "ORL", f: "Artisans", p: [0,-1,-1,-2,1,-2,-2,1],
+    nick: "Le miniaturiste",
+    quot: "Chirurgie fine de l’oreille et des sinus, cancers de la tête et du cou, audition, pédiatrie.",
+    heur: "Rendre l’audition, la voix, la respiration.",
+    envers: "Des cancers lourds et mutilants dans le versant cervico-facial.",
+    idee: "« Des amygdales et des otites. » La spécialité couvre des chirurgies parmi les plus fines.",
+    d: 6, co: "", opt: ["Audiophonologie"], fst: ["Cancérologie", "Chirurgie orbito-palpébro-lacrymale", "Maladies allergiques", "Sommeil"],
+    g: ["Nez, sinus, gorge, larynx, oreilles, audition, équilibre et tumeurs cervico-faciales, chez l’enfant comme l’adulte.",
+        "Convient aux profils très chirurgicaux comme aux plus médicaux.",
+        "Carrière hospitalière ou libérale ; le guide met en avant la qualité de vie."] },
+  { k: "opht", n: "Ophtalmologie", s: "Ophtalmologie", f: "Artisans", p: [2,-1,-1,-2,2,-2,-2,2],
+    nick: "L’orfèvre de la lumière",
+    quot: "Microchirurgie (cataracte, rétine), consultations nombreuses, imagerie de l’œil.",
+    heur: "Rendre la vue en quelques minutes de bloc.",
+    envers: "Un rythme de consultation soutenu, un territoire très circonscrit.",
+    idee: "« Des lunettes. » L’ophtalmologie est une spécialité chirurgicale de très haute précision.",
+    d: 6, co: "", opt: ["Chirurgie ophtalmopédiatrique et strabologique"], fst: ["Chirurgie orbito-palpébro-lacrymale"],
+    g: ["Microchirurgie (rétine, cataracte, glaucome, réfractive, strabisme), imagerie et lasers.",
+        "Un versant médical riche : les uvéites relient l’œil aux maladies systémiques.",
+        "Forte demande dans le secteur privé comme à l’hôpital."] },
+  { k: "go", n: "Gynécologie obstétrique", s: "Gynéco-obstétrique", f: "Artisans", p: [-1,-1,-2,-1,0,-1,-2,-1],
+    nick: "La sentinelle des naissances",
+    quot: "Accouchements, urgences obstétricales, chirurgie gynécologique et cancérologique, suivi des femmes.",
+    heur: "Participer à des naissances, un mélange de médecine et de chirurgie.",
+    envers: "Des gardes intenses, une responsabilité médico-légale forte, des drames rares mais marquants.",
+    idee: "« Une seule spécialité. » Elle recouvre plusieurs métiers très différents.",
+    d: 6, co: "", opt: [], fst: ["Cancérologie", EXP, "Fœtopathologie", "Médecine de la reproduction – andrologie"],
+    g: ["Spécialité médico-chirurgicale : grossesse, accouchement, médecine fœtale, chirurgie gynécologique et cancérologique.",
+        "Échographie et procréation médicalement assistée complètent la formation.",
+        "Une relative indépendance dans la gestion de ses urgences ; assistanat ou clinicat en général après l’internat."] },
+  { k: "cmf", n: "Chirurgie maxillo-faciale", s: "Chirurgie maxillo-faciale", f: "Artisans", p: [0,-1,-1,-2,1,-2,-2,0],
+    nick: "Le sculpteur du visage",
+    quot: "Traumatologie faciale, cancers, malformations, chirurgie orthognathique et reconstructrice.",
+    heur: "Rendre un visage, une mâchoire qui fonctionne, un sourire.",
+    envers: "Un DES absent de certaines villes, des services très différents d’un CHU à l’autre.",
+    idee: "« Des dents de sagesse. » La spécialité va de la microchirurgie à la greffe de face.",
+    d: 6, co: "", opt: ["Orthopédie dento-maxillo-faciale"], fst: ["Cancérologie", "Chirurgie en situation de guerre ou de catastrophe", "Chirurgie orbito-palpébro-lacrymale", "Sommeil"],
+    g: ["Traumatismes, tumeurs, malformations de la face, chirurgie orthognathique et reconstructrice.",
+        "Spécialité « en grande tension » selon le guide, avec une pénurie de spécialistes.",
+        "DES absent de certaines subdivisions ; services parfois communs avec la plastique ou l’ORL."] },
+  { k: "cho", n: "Chirurgie orale", s: "Chirurgie orale", f: "Artisans", p: [2,-2,-1,-2,2,-2,-2,2],
+    nick: "L’artisan de la bouche",
+    quot: "Avulsions, implantologie, chirurgie pré-prothétique, pathologies des mâchoires et de la muqueuse buccale.",
+    heur: "Des gestes courts et précis, une autonomie chirurgicale rapide.",
+    envers: "Une spécialité peu connue, un internat en inter-région hors Paris.",
+    idee: "« C’est de la dentisterie. » C’est une spécialité médicale et chirurgicale partagée avec les dentistes.",
+    d: 4, co: "", opt: [], fst: [],
+    g: ["Spécialité partagée par médecins et chirurgiens-dentistes, au sein d’un même internat de 4 ans.",
+        "Points forts cités : gestes courts, autonomie rapide, peu ou pas de gardes après l’internat.",
+        "Points faibles cités : spécialité peu connue, internat en inter-région hors Paris."] },
+  { k: "chvasc", n: "Chirurgie vasculaire", s: "Chirurgie vasculaire", f: "Artisans", p: [-1,-1,0,-2,1,-1,-2,0],
+    nick: "L’explorateur des vaisseaux",
+    quot: "Chirurgie ouverte et endovasculaire des artères et des veines, de l’aorte aux membres.",
+    heur: "Explorer presque tout le corps et sauver un membre ou une vie.",
+    envers: "Des patients souvent lourds sur le plan vasculaire, des urgences et des gardes.",
+    idee: "« On ampute des patients en fin de vie. » L’endovasculaire et l’innovation dominent aujourd’hui.",
+    d: 6, co: "", opt: [], fst: [],
+    g: ["Artères et veines de presque tout le corps, en chirurgie ouverte et endovasculaire.",
+        "L’endovasculaire représente environ 60 % de l’activité selon le guide.",
+        "Spécialité en essor, avec des perspectives libérales, hospitalières et de recherche."] },
+
+  { k: "cardio", n: "Médecine cardiovasculaire", s: "Cardiologie", f: "Hybrides", p: [-1,0,-1,-1,1,-1,-2,0],
+    nick: "Le mécanicien de précision",
+    quot: "Consultation, échographie, urgences coronaires, rythmologie, cardiologie interventionnelle pour certains.",
+    heur: "Un traitement qui agit vite et se mesure.",
+    envers: "Les astreintes et l’urgence pour les profils interventionnels.",
+    idee: "« Une seule façon d’être cardiologue. » La spécialité va de la consultation pure au plateau technique.",
+    d: 5, co: "Médecine vasculaire", opt: ["Cardiologie interventionnelle", "Rythmologie interventionnelle", "Imagerie cardiovasculaire d’expertise"], fst: ["Cardiologie pédiatrique et congénitale", "Médecine du sport", PH, "Sommeil"],
+    g: ["Un arsenal complet : écho, holter, coronarographie, pacemakers.",
+        "Surspécialisation possible : interventionnel, rythmologie, imagerie, sport, réadaptation.",
+        "Internat exigeant selon le guide : gardes, urgences en première ligne, avec un fort compagnonnage."] },
+  { k: "hge", n: "Hépato-gastro-entérologie", s: "Gastro-entérologie", f: "Hybrides", p: [0,0,-1,-1,0,-1,-2,0],
+    nick: "L’explorateur endoscopiste",
+    quot: "Endoscopies, hépatologie, cancérologie digestive, maladies inflammatoires chroniques de l’intestin.",
+    heur: "Un geste endoscopique qui évite une chirurgie.",
+    envers: "Les astreintes d’endoscopie en urgence, beaucoup de cancérologie.",
+    idee: "« On passe des tubes toute la journée. » L’hépatologie et les MICI sont un vrai versant médical.",
+    d: 5, co: "", opt: ["Soins intensifs d’hépato-gastro-entérologie"], fst: ["Addictologie", "Cancérologie", "Nutrition appliquée", PAL],
+    g: ["Tout le tube digestif, le foie et le pancréas : MICI, cancérologie, alcool, nutrition.",
+        "Spécialité médico-technique où l’endoscopie occupe une place centrale.",
+        "Nombreuses surspécialités possibles : endoscopie interventionnelle, hépatologie, proctologie."] },
+  { k: "pneumo", n: "Pneumologie", s: "Pneumologie", f: "Hybrides", p: [0,1,-1,1,0,-1,-2,-1],
+    nick: "Le gardien du souffle",
+    quot: "BPCO, asthme, cancers thoraciques, sommeil, endoscopie bronchique.",
+    heur: "Redonner du souffle et suivre des patients longtemps.",
+    envers: "Beaucoup de cancérologie et de maladies liées au tabac, des annonces fréquentes.",
+    idee: "« Une spécialité de fumeurs. » Elle inclut aussi le sommeil, l’allergologie respiratoire et des maladies rares.",
+    d: 5, co: "", opt: ["Soins intensifs respiratoires"], fst: ["Médecine du sport", "Addictologie", "Cancérologie", "Maladies allergiques", PH, PAL, "Sommeil"],
+    g: ["Une des disciplines les plus transversales : infectiologie, cancérologie thoracique, BPCO, asthme, sommeil.",
+        "Nombreux gestes : drainage, fibroscopie, EBUS, ventilation.",
+        "Immunothérapie et biothérapies changent les pronostics."] },
+  { k: "derm", n: "Dermatologie et vénéréologie", s: "Dermatologie", f: "Hybrides", p: [2,0,-1,-1,1,-2,-2,1],
+    nick: "L’œil qui lit la peau",
+    quot: "Diagnostic visuel, dermatoscopie, petite chirurgie, oncodermatologie, maladies inflammatoires.",
+    heur: "Un diagnostic posé d’un coup d’œil, des gestes rapides.",
+    envers: "Des consultations nombreuses et brèves, des maladies chroniques visibles et lourdes à vivre.",
+    idee: "« De l’esthétique. » La dermatologie dépiste des mélanomes et traite des maladies graves.",
+    d: 4, co: "", opt: [], fst: ["Cancérologie", "Maladies allergiques", PH],
+    g: ["Spécialité très clinique car visuelle : beaucoup de diagnostics à l’œil nu.",
+        "Nombreux gestes : biopsies, cryothérapie, chirurgie, lasers.",
+        "Exercice varié (hôpital, ville, université) ; seul point faible cité : lutter contre le mot « bouton »."] },
+  { k: "mvasc", n: "Médecine vasculaire", s: "Médecine vasculaire", f: "Hybrides", p: [1,1,-1,-1,1,-1,-2,1],
+    nick: "Le cartographe des vaisseaux",
+    quot: "Écho-Doppler, thromboses, artériopathies, Raynaud, lymphœdèmes, traitements endoveineux.",
+    heur: "Un diagnostic posé à l’écho et un geste qui soulage dans la foulée.",
+    envers: "Une spécialité peu visible, souvent confondue avec la cardiologie.",
+    idee: "« Des varices. » Elle couvre aussi l’embolie pulmonaire, les vascularites et les plaies.",
+    d: 4, co: "Médecine cardiovasculaire", opt: [], fst: ["Nutrition appliquée", PH],
+    g: ["Artères, veines, microcirculation et lymphatiques : thromboses, artériopathies, Raynaud, lymphœdèmes.",
+        "Explorations à maîtriser : écho-Doppler, capillaroscopie, épreuve de marche.",
+        "Nombreux gestes : traitements endoveineux, sclérose à la mousse, soins des plaies."] },
+
+  { k: "mi", n: "Médecine interne et immunologie clinique", s: "Médecine interne", f: "Enqueteurs", p: [1,1,-1,2,-2,2,-2,0],
+    nick: "Le détective du mur de photos",
+    quot: "Les patients que personne n’a su diagnostiquer, les maladies systémiques et rares, les avis pour les autres services.",
+    heur: "Le diagnostic trouvé après des semaines d’errance.",
+    envers: "Des patients parfois sans diagnostic ni traitement satisfaisant, des hospitalisations longues.",
+    idee: "« Une spécialité sans spécialité. » C’est la spécialité du raisonnement clinique pur.",
+    d: 5, co: "Maladies infectieuses et tropicales, Allergologie", opt: [], fst: ["Addictologie", "Bio-informatique médicale", "Douleur", EXP, "Maladies allergiques", "Nutrition appliquée", PH, PAL, "Thérapie cellulaire"],
+    g: ["Des maladies rares hyperspécialisées à la polypathologie du post-urgence.",
+        "Maquette très libre : une grande partie des semestres se fait hors de la spécialité.",
+        "Exercice essentiellement hospitalier ; chaque interniste façonne sa pratique."] },
+  { k: "mit", n: "Maladies infectieuses et tropicales", s: "Infectiologie", f: "Enqueteurs", p: [0,-1,-1,2,-2,2,1,0],
+    nick: "L’enquêteur sans frontières",
+    quot: "Avis dans tous les services, antibiothérapie, VIH, médecine des voyages, santé publique.",
+    heur: "Trouver le germe et guérir.",
+    envers: "Une spécialité transversale qui dépend beaucoup des autres équipes.",
+    idee: "« Une spécialité d’épidémie. » Le quotidien est surtout le conseil aux collègues.",
+    d: 5, co: "Médecine interne, Allergologie", opt: [], fst: ["Hygiène – prévention de l’infection", PH],
+    g: ["Infections complexes de tous les organes, et conseil sur le bon usage des antibiotiques.",
+        "Rôle central face aux maladies émergentes ; une expérience à l’étranger est encouragée.",
+        "Principalement hospitalière, mais l’exercice libéral de référent se développe."] },
+  { k: "neuro", n: "Neurologie", s: "Neurologie", f: "Enqueteurs", p: [0,1,-1,2,-1,-1,-2,-1],
+    nick: "L’horloger du système nerveux",
+    quot: "AVC en urgence, épilepsie, sclérose en plaques, maladies neurodégénératives, un examen clinique très construit.",
+    heur: "Localiser une lésion à l’examen avant l’imagerie, voir un AVC récupérer.",
+    envers: "Des maladies chroniques et évolutives que l’on ralentit sans les guérir.",
+    idee: "« On diagnostique mais on ne traite pas. » Les traitements de l’AVC et de la SEP ont changé la donne.",
+    d: 4, co: "", opt: ["Traitement interventionnel de l’ischémie cérébrale aiguë"], fst: ["Cancérologie", "Douleur", EXP, PH, PAL, "Sommeil"],
+    g: ["AVC, épilepsie, SEP, Parkinson, démences, céphalées, neuromusculaire, sommeil.",
+        "Avant tout clinique, devenue aussi une spécialité d’urgence et technique (EEG, EMG).",
+        "Relation centrale avec le patient et sa famille, avec des questions de handicap et d’éthique."] },
+  { k: "hemato", n: "Hématologie", s: "Hématologie", f: "Enqueteurs", p: [0,1,-1,2,-1,0,-2,-2],
+    nick: "Le chercheur au chevet",
+    quot: "Leucémies, lymphomes, greffes de moelle, mais aussi hématologie non maligne.",
+    heur: "Des guérisons spectaculaires, une spécialité très proche de la recherche.",
+    envers: "Des traitements lourds, des complications graves, des décès de patients jeunes.",
+    idee: "« Une spécialité de laboratoire. » C’est une médecine très clinique.",
+    d: 5, co: "", opt: [], fst: ["Bio-informatique médicale", "Cancérologie", "Hématologie bioclinique", PH, PAL, "Thérapie cellulaire"],
+    g: ["Leucémies, lymphomes, myélomes : chimiothérapie intensive, immunothérapie, greffe.",
+        "Clinique, biologie et recherche fondamentale s’y mêlent en permanence.",
+        "Débouchés variés : CHU, Établissement français du sang, thérapie cellulaire, industrie, recherche."] },
+  { k: "gen", n: "Génétique médicale", s: "Génétique", f: "Enqueteurs", p: [2,1,-1,2,-2,1,0,-1],
+    nick: "L’archiviste des familles",
+    quot: "Conseil génétique, diagnostic de maladies rares, annonces aux familles, interprétation de séquençages.",
+    heur: "Mettre fin à des années d’errance diagnostique.",
+    envers: "Peu de traitements pour beaucoup de maladies, des annonces qui touchent toute une famille.",
+    idee: "« Une spécialité de laboratoire. » La consultation y est centrale.",
+    d: 4, co: "", opt: [], fst: ["Bio-informatique médicale", "Fœtopathologie", "Génétique et médecine moléculaire bioclinique"],
+    g: ["Activité clinique (conseil génétique) et biologique (analyses moléculaires et cytogénétiques).",
+        "Recherche très présente : les internes publient pendant l’internat, le master 2 est encouragé.",
+        "Points forts cités : transversalité, qualité de vie. Points faibles : coût de la formation, exercice surtout en CHU."] },
+  { k: "legale", n: "Médecine légale et expertises médicales", s: "Médecine légale", f: "Enqueteurs", p: [-1,-2,0,1,-1,1,0,-2],
+    nick: "Le témoin de la vérité",
+    quot: "Examens de victimes, autopsies, expertises pour la justice.",
+    heur: "Mettre la médecine au service de la vérité et des victimes.",
+    envers: "Une exposition à la violence, peu de soins au sens classique.",
+    idee: "« Des autopsies comme dans les séries. » Une grande part du travail concerne des victimes vivantes.",
+    d: 4, co: "", opt: [], fst: ["Fœtopathologie"],
+    g: ["Trois axes : examens de victimes en unité médico-judiciaire, thanatologie et autopsies, expertises.",
+        "Travail étroit avec police, magistrats et balisticiens, parfois jusqu’à la cour d’assises.",
+        "Une spécialité de terrain, tournée vers les sciences humaines et sociales."] },
+  { k: "allergo", n: "Allergologie", s: "Allergologie", f: "Enqueteurs", p: [1,1,-1,1,-1,0,-1,1],
+    nick: "Le diplomate de l’immunité",
+    quot: "Tests cutanés et de provocation, immunothérapies, consultations d’adultes et d’enfants.",
+    heur: "Rendre une vie normale à quelqu’un qui vivait dans la peur d’une réaction.",
+    envers: "Une spécialité jeune, encore peu visible, souvent confondue avec d’autres.",
+    idee: "« Des rhumes des foins. » L’allergologie gère aussi l’anaphylaxie et les allergies médicamenteuses.",
+    d: 4, co: "Médecine interne, Maladies infectieuses et tropicales", opt: [], fst: [PH],
+    g: ["Allergies respiratoires, cutanées, alimentaires, médicamenteuses et anaphylaxie, chez l’adulte et l’enfant.",
+        "Tests cutanés, tests de provocation, immunothérapies, induction de tolérance.",
+        "Spécialité jeune, à l’interface de nombreuses autres, avec une forte part d’éducation et de prévention."] },
+
+  { k: "mg", n: "Médecine générale", s: "Médecine générale", f: "Compagnons", p: [1,2,-2,1,-2,2,0,-1],
+    nick: "Le romancier de quartier",
+    quot: "Des consultations qui couvrent tous les âges et tous les organes, souvent sans examen immédiat pour trancher.",
+    heur: "Suivre plusieurs générations d’une même famille, être le premier recours.",
+    envers: "Décider seul dans l’incertitude, la charge administrative, le risque d’isolement.",
+    idee: "« De la bobologie. » C’est la spécialité qui voit le spectre de pathologies le plus large.",
+    d: 4, co: "", opt: [], fst: ["Addictologie", "Douleur", EXP, "Médecine du sport", "Médecine scolaire", PAL, "Médecine polyvalente"],
+    g: ["Soins primaires, suivi au long cours, coordination : le premier maillon de la chaîne de soins.",
+        "Une 4e année de docteur junior en ambulatoire à partir de novembre 2026.",
+        "Validation par un portfolio plutôt qu’un mémoire ; recherche et postes universitaires ambulatoires en essor."] },
+  { k: "geria", n: "Gériatrie", s: "Gériatrie", f: "Compagnons", p: [1,1,-2,1,-2,2,-1,-2],
+    nick: "Le diplomate du temps long",
+    quot: "Patients polypathologiques, décisions éthiques sur ce qu’il est raisonnable de faire, travail serré avec familles et soignants.",
+    heur: "Rendre son autonomie à quelqu’un qu’on croyait condamné à l’hôpital.",
+    envers: "La fin de vie fréquente, le manque de moyens, un regard social parfois dévalorisant.",
+    idee: "« On gère des fins de vie. » C’est une médecine globale, parmi les plus complexes.",
+    d: 4, co: "", opt: [], fst: ["Douleur", "Nutrition appliquée", PH, PAL, "Sommeil"],
+    g: ["Polypathologie, iatrogénie, fragilité : des signes souvent trompeurs, un diagnostic difficile.",
+        "Chaque décision pèse bénéfice, risque, espérance et qualité de vie.",
+        "Exercice vaste : court séjour, soins de suite, EHPAD, consultations mémoire, équipes mobiles."] },
+  { k: "pedia", n: "Pédiatrie", s: "Pédiatrie", f: "Compagnons", p: [0,1,-2,1,-1,2,-1,-1],
+    nick: "Le traducteur à trois voix",
+    quot: "On soigne un enfant et on rassure une famille, de la néonatologie aux urgences, de la maladie chronique à l’adolescence.",
+    heur: "La capacité de récupération des enfants, des familles reconnaissantes.",
+    envers: "Les situations graves chez l’enfant pèsent lourd, les parents inquiets peuvent être exigeants.",
+    idee: "« Des rhumes et des vaccins. » La pédiatrie hospitalière couvre des pathologies lourdes et rares.",
+    d: 5, co: "", opt: ["Néonatologie", "Neuropédiatrie", "Pneumopédiatrie", "Réanimation pédiatrique"], fst: ["Cardiologie pédiatrique et congénitale", "Cancérologie", "Douleur", "Maladies allergiques", "Médecine du sport", "Médecine scolaire", "Nutrition appliquée", PH, PAL, "Sommeil", "Urgences pédiatriques"],
+    g: ["Du nouveau-né à l’adolescent, toutes les surspécialités d’organe accessibles.",
+        "Une relation triangulaire entre pédiatre, enfant et parents.",
+        "Points faibles cités : un exercice parfois difficile, des gardes très saisonnières."] },
+  { k: "psy", n: "Psychiatrie", s: "Psychiatrie", f: "Compagnons", p: [1,2,-2,2,-2,1,-1,-2],
+    nick: "Le lecteur de pensées",
+    quot: "Entretiens, suivi au long cours, urgences psychiatriques, soins sans consentement, pharmacologie.",
+    heur: "Voir quelqu’un se reconstruire sur des mois ou des années.",
+    envers: "Peu de résultats visibles à court terme, la violence parfois, la stigmatisation.",
+    idee: "« On ne fait que parler. » La psychiatrie mobilise beaucoup de médecine somatique et de pharmacologie.",
+    d: 5, co: "", opt: ["Psychiatrie de l’enfant et de l’adolescent", "Psychiatrie de la personne âgée"], fst: ["Addictologie", "Douleur", EXP, "Nutrition appliquée", PH, PAL, "Sommeil"],
+    g: ["Clinique au premier plan : sémiologie fine, diagnostics différentiels, projets de soins.",
+        "Exercices variés : urgences, liaison, périnatalité, milieu pénitentiaire, psycho-oncologie.",
+        "Postes d’assistant et de praticien hospitalier plutôt faciles d’accès partout en France selon le guide."] },
+  { k: "onco", n: "Oncologie", s: "Oncologie", f: "Compagnons", p: [1,1,-2,2,0,0,-2,-2],
+    nick: "Le capitaine de longue traversée",
+    quot: "Stratégies de traitement, réunions pluridisciplinaires, essais thérapeutiques, annonces.",
+    heur: "Des avancées thérapeutiques rapides et des liens forts avec les patients.",
+    envers: "L’exposition répétée à la fin de vie et aux annonces graves.",
+    idee: "« Une spécialité triste. » Beaucoup d’oncologues parlent d’abord de sens et de confiance.",
+    d: 5, co: "", opt: ["Oncologie médicale", "Oncologie radiothérapie"], fst: ["Bio-informatique médicale", "Cancérologie", "Douleur", EXP, "Génétique et médecine moléculaire bioclinique", PH, PAL],
+    g: ["Choix entre oncologie médicale et radiothérapie dès la fin du 2e semestre.",
+        "Points forts cités : concertation, richesse humaine, horaires corrects, salaires libéraux attractifs.",
+        "Points faibles cités : patients polypathologiques, peu d’actes techniques, lourdeur psychologique."] },
+  { k: "nephro", n: "Néphrologie", s: "Néphrologie", f: "Compagnons", p: [1,2,-1,2,0,0,-2,-1],
+    nick: "Le compagnon de dialyse",
+    quot: "Insuffisance rénale chronique, dialyse, transplantation, troubles hydro-électrolytiques.",
+    heur: "Des relations de plusieurs années avec des patients qu’on connaît très bien.",
+    envers: "Des patients dépendants d’un traitement lourd, une progression parfois inévitable.",
+    idee: "« Des calculs de clairance. » C’est une spécialité de physiologie et de relation.",
+    d: 5, co: "", opt: ["Soins intensifs de néphrologie"], fst: ["Génétique et médecine moléculaire bioclinique", PH],
+    g: ["Physiologie rénale, maladies glomérulaires, dialyse, transplantation, hypertension.",
+        "Spécialité médico-technique : ponctions rénales, cathéters de dialyse.",
+        "Le suivi des patients transplantés concerne aujourd’hui la majorité des néphrologues."] },
+  { k: "edn", n: "Endocrinologie-diabétologie-nutrition", s: "Endocrinologie", f: "Compagnons", p: [2,2,-1,2,0,0,-1,1],
+    nick: "Le stratège patient",
+    quot: "Diabète, thyroïde, surrénales, obésité, éducation thérapeutique.",
+    heur: "Accompagner un patient vers l’autonomie dans sa maladie.",
+    envers: "Des résultats qui dépendent beaucoup des patients eux-mêmes.",
+    idee: "« Une spécialité monotone. » Le diabète a été bouleversé par les capteurs et les nouveaux traitements.",
+    d: 4, co: "", opt: [], fst: ["Cancérologie", "Médecine de la reproduction – andrologie", PH],
+    g: ["Diabète, thyroïde, hypophyse, surrénales, obésité, nutrition, troubles du comportement alimentaire.",
+        "Au carrefour de nombreuses spécialités, avec un regard global sur le patient.",
+        "Exercice varié : cabinet, clinique, hôpital, CHU, mixte."] },
+  { k: "rhumato", n: "Rhumatologie", s: "Rhumatologie", f: "Compagnons", p: [1,2,-1,1,-1,0,-2,0],
+    nick: "L’artisan du mouvement",
+    quot: "Maladies inflammatoires, biothérapies, ostéoporose, infiltrations, échographie.",
+    heur: "Rendre la mobilité à un patient bloqué par une polyarthrite.",
+    envers: "La douleur chronique, difficile à soulager.",
+    idee: "« Des lombalgies. » C’est une spécialité d’immunologie autant que d’appareil locomoteur.",
+    d: 4, co: "", opt: [], fst: ["Cancérologie", "Douleur", EXP, "Médecine du sport", PAL, PH],
+    g: ["Inflammatoire, auto-immun, mécanique, osseux : une spécialité très transversale et clinique.",
+        "Actes en plein développement : échographie, infiltrations guidées, ostéodensitométrie.",
+        "Exercice en ville, en cabinets de groupe bien équipés, ou à l’hôpital avec beaucoup de recherche."] },
+  { k: "mpr", n: "Médecine physique et de réadaptation", s: "MPR", f: "Compagnons", p: [1,1,-2,0,0,1,-2,-1],
+    nick: "Le chef d’orchestre de la reconstruction",
+    quot: "Rééducation après AVC, lésions médullaires, amputations ; coordination de kinés, ergothérapeutes, orthophonistes.",
+    heur: "Voir quelqu’un remarcher.",
+    envers: "Des progrès lents, des handicaps définitifs à accepter.",
+    idee: "« Une médecine de convalescence. » C’est une spécialité technique et innovante.",
+    d: 4, co: "", opt: [], fst: [EXP, "Douleur", "Médecine du sport", PH],
+    g: ["Déficiences neurologiques, ostéo-articulaires et cardiorespiratoires, à tout âge.",
+        "Prise en charge au long cours de l’autonomie, en coordonnant une équipe pluridisciplinaire.",
+        "Discipline technologique : réalité augmentée, télémédecine, outils d’intelligence artificielle."] },
+  { k: "gynmed", n: "Gynécologie médicale", s: "Gynécologie médicale", f: "Compagnons", p: [2,2,-2,1,0,0,-1,0],
+    nick: "La confidente au long cours",
+    quot: "Contraception, infertilité, ménopause, endocrinologie, suivi des cancers gynécologiques et mammaires.",
+    heur: "Accompagner des femmes à toutes les étapes de leur vie.",
+    envers: "Un diplôme reconnu seulement en France, une formation inégale selon les villes.",
+    idee: "« La même chose que la gynéco-obstétrique. » Ici, ni bloc ni garde après l’internat : c’est la médecine globale de la femme.",
+    d: 4, co: "", opt: [], fst: ["Cancérologie", "Médecine de la reproduction – andrologie", PH, EXP],
+    g: ["Décrite par le guide comme la médecine interne de la femme : endocrinologie, obstétrique, oncologie.",
+        "Points forts cités : gestes techniques, pas de garde après l’internat, libéral ou hôpital au choix.",
+        "Points faibles cités : diplôme reconnu uniquement en France, formation inégale entre CHU."] },
+
+  { k: "radio", n: "Radiologie et imagerie médicale", s: "Radiologie", f: "Lecteurs", p: [0,-2,1,0,-1,1,-2,2],
+    nick: "Celui qui voit à travers",
+    quot: "Lecture d’examens en grand volume, échographie, radiologie interventionnelle pour certains, avis aux cliniciens.",
+    heur: "Être celui qui donne la réponse, toucher à tous les organes.",
+    envers: "Un contact patient réduit, une pression de volume, des outils d’aide à la lecture qui évoluent vite.",
+    idee: "« On ne voit jamais de patients. » L’échographie et l’interventionnel sont des métiers de contact et de geste.",
+    d: 5, co: "", opt: ["Radiologie interventionnelle avancée (1 an de plus)"], fst: [],
+    g: ["Radiographie, échographie, scanner, IRM, et surspécialités d’organe.",
+        "Radiologie interventionnelle dès l’internat : vasculaire, oncologique, neuroradiologie.",
+        "L’intelligence artificielle fait partie de la formation comme un outil ; de nombreux départs en retraite sont attendus."] },
+  { k: "acp", n: "Anatomie et cytologie pathologiques", s: "Anatomopathologie", f: "Lecteurs", p: [2,-2,2,1,-1,0,-2,2],
+    nick: "Le détective silencieux",
+    quot: "Lecture de lames et de prélèvements, diagnostic des cancers, examens extemporanés pendant une opération.",
+    heur: "Un diagnostic dont dépend tout le traitement, un travail profond et calme.",
+    envers: "Un rôle décisif mais peu visible des patients.",
+    idee: "« Des autopsies. » L’essentiel est le diagnostic chez les vivants.",
+    d: 5, co: "", opt: [], fst: ["Fœtopathologie"],
+    g: ["Points forts cités : un diagnostic de certitude dans la majorité des cas, pas de gardes, collégialité.",
+        "Biologie moléculaire et pathologie numérique transforment le métier.",
+        "Points faibles cités : pas de patients, sentiment d’être une spécialité à part."] },
+  { k: "bio", n: "Biologie médicale", s: "Biologie médicale", f: "Lecteurs", p: [1,-2,2,2,1,1,0,2],
+    nick: "L’ingénieur de l’invisible",
+    quot: "Validation des analyses, gestion d’un laboratoire, biologie spécialisée, avis aux cliniciens.",
+    heur: "Un métier à la fois scientifique, technique et managérial.",
+    envers: "Peu de clinique directe, un secteur marqué par les regroupements de laboratoires.",
+    idee: "« Appuyer sur un bouton. » L’interprétation et le conseil aux cliniciens sont au cœur du métier.",
+    d: 4, co: "", opt: ["Biologie générale", "Médecine moléculaire, génétique, pharmacologie", "Hématologie et immunologie", "Agents infectieux", "Biologie de la reproduction"], fst: ["Bio-informatique médicale", "Génétique et médecine moléculaire bioclinique", "Hématologie bioclinique", "Hygiène – prévention de l’infection", "Médecine de la reproduction – andrologie", "Nutrition appliquée", PH, "Thérapie cellulaire – transfusion"],
+    g: ["Spécialité mixte, médecins et pharmaciens, qui contribue à environ 70 % des diagnostics selon le guide.",
+        "Gérer un laboratoire : esprit d’équipe, qualité, accréditation.",
+        "Contact patient possible (hémostase, reproduction, génétique) ; la recherche est très accessible."] },
+  { k: "nucl", n: "Médecine nucléaire", s: "Médecine nucléaire", f: "Lecteurs", p: [2,-1,1,2,0,0,-2,1],
+    nick: "Le physicien du vivant",
+    quot: "Scintigraphies, TEP, traitements par radiothérapie interne vectorisée.",
+    heur: "Une spécialité entre physique et médecine, en plein essor thérapeutique.",
+    envers: "Une petite communauté, peu de postes dans certaines régions.",
+    idee: "« De l’imagerie seulement. » Le versant thérapeutique se développe vite.",
+    d: 4, co: "", opt: [], fst: [],
+    g: ["Imagerie par radiotraceurs : cancérologie, cardiologie, démences, pédiatrie.",
+        "Plus de contact patient qu’on ne croit : interrogatoire, épreuves d’effort, rôle clé en RCP.",
+        "Versant thérapeutique en plein essor, notamment pour le cancer de la prostate et les tumeurs neuroendocrines."] },
+
+  { k: "sp", n: "Santé publique", s: "Santé publique", f: "Architectes", p: [2,2,2,2,-1,2,2,2],
+    nick: "L’urbaniste de la santé",
+    quot: "Épidémiologie, évaluation des politiques, recherche, agences sanitaires, gestion hospitalière.",
+    heur: "Un impact sur des milliers de personnes à la fois.",
+    envers: "La clinique disparaît presque, les résultats sont lointains et diffus.",
+    idee: "« On ne fait plus de médecine. » C’est une médecine dont le patient est une population.",
+    d: 4, co: "", opt: ["Administration de la santé (EHESP)"], fst: ["Addictologie", "Hygiène – prévention de l’infection", PH, "Médecine scolaire", "Bio-informatique médicale", "Nutrition appliquée"],
+    g: ["Approche populationnelle : prévention, épidémiologie, données, politiques et économie de la santé.",
+        "Exercice à l’hôpital, en agence (ARS, HAS), en administration, en ONG ou à l’international.",
+        "Stages à l’étranger possibles, réseau d’internes actif en France et en Europe."] },
+  { k: "travail", n: "Médecine et santé au travail", s: "Médecine du travail", f: "Architectes", p: [2,1,-2,1,0,1,1,0],
+    nick: "Le médiateur",
+    quot: "Visites des salariés, aménagements de postes, prévention des risques, lien avec les employeurs.",
+    heur: "Prévenir plutôt que guérir, une vie professionnelle équilibrée.",
+    envers: "Une position parfois inconfortable entre salarié et employeur.",
+    idee: "« Des visites de routine. » Le métier est surtout une médecine de prévention et d’expertise.",
+    d: 4, co: "", opt: [], fst: ["Addictologie", "Douleur", EXP, "Maladies allergiques", "Médecine du sport", "Sommeil"],
+    g: ["Protéger la santé des travailleurs : risques professionnels, maintien dans l’emploi.",
+        "Au moins 30 % du temps en milieu de travail, à la tête d’une équipe pluridisciplinaire.",
+        "Conditions favorables selon le guide : indépendance, poste protégé, avantages du salariat."] }
+];
+SPECS.forEach((s, i) => { s.id = i; });
+
+/* ===== Quiz 1 : Les goûts ===== */
+function parseEff(code) {
+  const e = {};
+  for (const m of code.matchAll(/([A-Z]{3})([+-]\d)/g)) e[m[1]] = Number(m[2]);
+  return e;
+}
+const TASTE_THEMES = [[0, "Cinéma et séries"], [5, "Livres et idées"], [9, "Voyages et loisirs"], [14, "Objets et quotidien"], [18, "Dilemmes et imaginaires"], [24, "Ton expérience de stage"]];
+const TASTE = [
+  ["Dans un film policier, ton moment préféré :", [["La course-poursuite sur les toits","TEM-2 OUT-1"],["L’interrogatoire où le suspect finit par craquer","PRE-2 EMO-1"],["L’enquêteur qui relie les indices sur son mur","INC-2 OUT+2"],["La scène de labo où un détail au microscope fait tout basculer","PRE+2 FOC-1"]]],
+  ["Ta série idéale :", [["Huit saisons : on vieillit avec les personnages","ARC+2 PRE-1"],["Une mini-série en quatre épisodes, tout est dit","ARC-1 INC+1"],["Une anthologie : une histoire différente à chaque épisode","ARC-2 FOC+1 EMO+1"]]],
+  ["Le genre de film qui te ressemble :", [["Le film catastrophe : tout s’effondre, il faut agir","TEM-2 EMO-1"],["Le film de casse préparé à la minute","TEM+2 OUT-1 INC+1"],["La saga familiale sur trois générations","ARC+2 EMO-2 FOC+1"],["Le documentaire sur une épidémie ou une ville","ECH+2 PRE+1"]]],
+  ["La fin de film idéale :", [["Une fin ouverte dont on débat des heures","INC-2"],["Tout s’éclaire dans les dernières minutes","INC+2"],["Une fin douce-amère, réaliste","EMO-1 ARC+1"]]],
+  ["Dans un film de braquage, ton personnage préféré :", [["Celui qui crochète le coffre","OUT-2 FOC-2"],["Le cerveau qui a tout planifié","OUT+2 TEM+1"],["Le chauffeur qui improvise quand tout dérape","TEM-2"],["Celui qui pirate les caméras depuis le camion","PRE+2 OUT+1"]]],
+  ["La phrase à afficher au-dessus de ton bureau :", [["« Distinguer ce qui dépend de nous et ce qui n’en dépend pas »","INC-1 EMO-1 ARC+1"],["« Diviser chaque difficulté en autant de parcelles qu’il se pourrait »","INC+2 FOC-1"],["« Le plus grand bien pour le plus grand nombre »","ECH+2 PRE+1"],["« Agir d’abord, comprendre ensuite »","TEM-2 OUT-1"]]],
+  ["Le livre que tu emportes pour un long voyage :", [["Un grand roman russe de 1 200 pages","ARC+2 EMO-1"],["Un recueil de nouvelles","ARC-2"],["Un atlas illustré","PRE+1 FOC+1 EMO+1"],["Un essai sur l’histoire des sociétés","ECH+2"]]],
+  ["Dans un débat entre amis, tu es plutôt :", [["Celle ou celui qui pose la question que personne n’ose poser","INC-2 PRE-1"],["Celle ou celui qui tranche pour qu’on avance","TEM-1 INC+2"],["Celle ou celui qui remarque qu’une personne n’a rien dit","EMO-2 PRE-2 ECH-1"],["Celle ou celui qui sort les chiffres","ECH+1 PRE+1 OUT+1"]]],
+  ["Une énigme jamais résolue (une affaire classée, un manuscrit indéchiffré) :", [["Ça m’obsède pendant des semaines","INC-2 ARC+1"],["Ça m’agace : je préfère les problèmes qui ont une solution","INC+2"],["Ça m’intéresse si ça concerne beaucoup de monde","ECH+2"]]],
+  ["Ta façon de découvrir une ville inconnue :", [["Sans carte, au hasard des rues","INC-2 TEM-1"],["Un itinéraire optimisé la veille","TEM+2 INC+1"],["Un seul quartier, à fond, pendant trois jours","FOC-2 ARC+1 ECH-1"],["Monter tout en haut pour voir la ville d’un coup","FOC+2 ECH+1"]]],
+  ["Le voyage idéal :", [["Un trek engagé, de l’imprévu à chaque étape","TEM-2 OUT-1"],["Revenir chaque année au même endroit, retrouver les mêmes gens","ARC+2 PRE-1"],["Une ville tous les deux jours","ARC-2 FOC+1 EMO+1"],["Une mission de terrain dans une ONG","ECH+1 EMO-2"]]],
+  ["Ce qui te détend vraiment :", [["Bricoler, réparer, monter un meuble","OUT-2 INC+1"],["Un puzzle de 2 000 pièces","OUT+1 INC-1 PRE+1"],["Un sport d’équipe intense","TEM-2 PRE-1"],["Écouter un ami raconter sa semaine","PRE-2 EMO-1 ECH-1"]]],
+  ["Au restaurant :", [["Le menu dégustation surprise","INC-1 FOC+1"],["Je sais exactement ce que je veux","INC+2 TEM+1"],["Je goûte dans l’assiette de tout le monde","FOC+2 PRE-1"]]],
+  ["Dans un musée :", [["Vingt minutes devant un seul tableau, à en chercher les détails","FOC-2 PRE+1 TEM+1"],["Je lis tous les cartels pour comprendre l’histoire","OUT+2 ARC+1"],["Je regarde surtout les gens qui regardent","PRE-2 EMO-1"],["Je file vers la salle des machines et des instruments","OUT-2"]]],
+  ["L’objet que tu garderas toute ta vie :", [["Un bon couteau ou un outil de qualité","OUT-2"],["Un carnet rempli","OUT+2 ARC+1"],["Une loupe ou un appareil photo","PRE+2 FOC-1"],["Les lettres qu’on t’a écrites","EMO-2 ARC+2"]]],
+  ["Ton bureau ressemble à :", [["Un plan de travail : chaque chose à sa place","TEM+2 INC+1"],["Un chaos fertile où tu retrouves tout","INC-1 TEM-1"],["Un lieu de passage : il y a toujours quelqu’un","PRE-2"],["Un écran, un casque, la paix","PRE+2 EMO+1"]]],
+  ["Ton téléphone sonne à 3 h du matin :", [["Montée d’adrénaline, je suis debout en dix secondes","TEM-2"],["J’organise ma vie pour que ça n’arrive jamais","TEM+2"],["Premier réflexe : qui a besoin de moi ?","EMO-1 PRE-1 ECH-1"]]],
+  ["Un ami traverse un moment très dur :", [["Je suis là, même sans savoir quoi dire","EMO-2 PRE-2"],["Je cherche une solution concrète","OUT-1 INC+1 EMO+1"],["Je l’aide sur la durée, sans bruit","ARC+2 EMO-1"],["Je suis présent, mais j’ai besoin de souffler ensuite","EMO+1"]]],
+  ["Tu préfères :", [["Bâtir une cathédrale que tu ne verras pas finie","ARC+2 ECH+1"],["Réparer un objet cassé en un après-midi","ARC-2 OUT-2"],["Dessiner les plans de la cathédrale sans poser une pierre","OUT+2 PRE+1"]]],
+  ["Un super-pouvoir :", [["Voir à travers les choses","PRE+2"],["Arrêter le temps quelques secondes","TEM-2 OUT-1"],["Lire dans les pensées","PRE-2 OUT+2 ECH-1"],["Être partout à la fois","ECH+2 FOC+2"]]],
+  ["Dans une autre vie, tu aurais été :", [["Horloger","FOC-2 OUT-2 TEM+2"],["Charpentier","OUT-2 ARC-1"],["Restaurateur d’œuvres d’art","OUT-1 PRE+1 ARC+1"],["Urbaniste","ECH+2 OUT+1 FOC+2"]]],
+  ["Ton jeu de société préféré :", [["Les échecs","OUT+2 INC+1 TEM+2"],["Un jeu de rapidité où il faut taper le premier","TEM-2 OUT-1"],["Un jeu coopératif où l’on sauve le monde ensemble","ECH+2"],["Un jeu de bluff et de rôles cachés","PRE-2 INC-2"]]],
+  ["Sur un tournage, ton poste :", [["Chef opérateur, l’œil sur l’image","PRE+2 FOC-1"],["Cascadeur","TEM-2 OUT-2"],["Directeur d’acteurs","PRE-2 EMO-1"],["Monteur, qui donne un sens à des heures de rushes","INC-1 OUT+2 PRE+1"]]],
+  ["Si tu avais un jardin :", [["Un potager qu’on suit d’année en année","ARC+2 OUT-1"],["Un bonsaï taillé au millimètre","FOC-2 OUT-2 TEM+2"],["Un jardin partagé de quartier","ECH+2 PRE-1"],["Pas de jardin : je préfère les grands espaces sauvages","TEM-1 INC-1 FOC+1"]]],
+  ["Le stage idéal se termine sur :", [["Un patient sorti guéri, que tu ne reverras jamais","ARC-2"],["Une famille qui te remercie après des mois de suivi","ARC+2 EMO-1"],["Un diagnostic que personne n’avait trouvé","INC-2 OUT+2"],["Un protocole que tu as fait adopter par tout le service","ECH+2"]]],
+  ["On te montre un geste pour la première fois (suture, ponction) :", [["J’en redemande, je veux le refaire dix fois","OUT-2"],["C’est utile, sans plus","OUT+1"],["Je veux d’abord comprendre pourquoi on le fait ici","OUT+2 INC-1"]]],
+  ["Les gardes :", [["Le meilleur moment du stage","TEM-2"],["Un passage obligé, ni plus ni moins",""],["J’imagine volontiers un exercice qui s’en passe","TEM+2"]]],
+  ["Ce qui t’épuise le plus en stage :", [["Ne pas savoir ce qu’a le patient","INC+2"],["Revoir la même situation sans amélioration","ARC-2"],["Assister aux annonces difficiles","EMO+2"],["Rester des heures sans rien faire de mes mains","OUT-2"]]],
+  ["Un patient parle 45 minutes de tout sauf de son symptôme :", [["Passionnant : c’est là que tout se joue","PRE-2 FOC+2 INC-1"],["Frustrant : j’ai envie de recentrer","FOC-1 INC+1"]]],
+  ["Des images, des lames ou des tracés, huit heures par jour :", [["Avec plaisir, c’est un monde en soi","PRE+2"],["Seulement si un patient m’attend derrière",""],["Impossible, j’ai besoin de quelqu’un en face","PRE-2"]]],
+  ["Dans dix ans, tu préfères qu’on t’appelle :", [["Pour l’organe que tu connais mieux que personne","FOC-2"],["Pour le patient que personne n’arrive à démêler","FOC+2 INC-1"]]],
+  ["La satisfaction d’une journée de travail :", [["Doit se voir avant le soir","ARC-2 TEM-1"],["Peut attendre des années","ARC+2"]]],
+  ["Le décès d’un patient dans le service :", [["L’accompagner fait partie du cœur du métier","EMO-2"],["Je peux y faire face, ponctuellement",""],["Je préfère que ça reste rare","EMO+2"]]],
+  ["Changer les choses, pour toi, c’est :", [["Changer la vie d’une personne","ECH-2"],["Changer la règle qui s’applique à des milliers","ECH+2"],["Alterner les deux",""]]]
+].map(([t, o], i) => ({ t, theme: TASTE_THEMES.filter(x => x[0] <= i).pop()[1], w: i >= 24 ? 2 : 1, o: o.map(([text, code]) => ({ text, eff: parseEff(code) })) }));
+
+/* ===== Quiz 3 : Mon parcours, les souvenirs ===== */
+const MOMENTS = [
+  ["Le moment de stage que tu as le plus raconté à tes proches :", [["Un geste que j’ai réussi pour la première fois","OUT-2 ARC-1"],["Un diagnostic que j’ai trouvé avant tout le monde","INC-2 OUT+2"],["Un patient qui m’a marqué","EMO-2 PRE-2 ARC+1"],["Une nuit de garde complètement folle","TEM-2"],["Une image ou une lame impressionnante","PRE+2 FOC-1"]]],
+  ["Ta méthode pour réviser les EDN :", [["Un planning serré et des fiches","TEM+2 INC+1"],["Des QCM en série, le plus possible","ARC-1 TEM-1"],["Des cas cliniques pour raisonner","OUT+2 INC-1"],["En groupe, à expliquer aux autres","PRE-2 ECH+1"]]],
+  ["Ton job étudiant ou ton engagement :", [["Animateur, colos, encadrement de jeunes","PRE-2 ARC+1"],["Cours particuliers ou tutorat","ARC+1 OUT+1"],["Association, BDE, organisation d’événements","ECH+2 FOC+1"],["Un job manuel ou de service","OUT-2 TEM-1"],["Rien de tout ça",""]]],
+  ["Ton dimanche idéal :", [["Un sport intense ou une sortie en montagne","TEM-2 OUT-1"],["Bricoler, cuisiner, jardiner","OUT-2 ARC+1"],["Lire ou enchaîner une série","OUT+2 PRE+1"],["Voir la famille ou les amis","PRE-2 ARC+1"]]],
+  ["Le cours que tu as préféré en première partie de cursus :", [["Anatomie","FOC-2 OUT-1"],["Physiologie","OUT+2 FOC+1"],["Histologie","PRE+2 FOC-1"],["Santé publique, épidémiologie","ECH+2 FOC+2"],["Sémiologie","PRE-1 INC-1"]]],
+  ["Ce qui t’a donné envie de faire médecine :", [["Un médecin de famille que j’admirais","ARC+2 PRE-2"],["Un geste ou un chirurgien que j’ai vu à l’œuvre","OUT-2"],["La science, le fonctionnement du corps","OUT+2 PRE+1"],["Un proche malade","EMO-2 PRE-1"],["Être utile au plus grand nombre","ECH+2"]]]
+].map(([t, o]) => ({ t, theme: "Tes souvenirs", w: 1, o: o.map(([text, code]) => ({ text, eff: parseEff(code) })) }));
+
+/* ===== Utilitaires ===== */
+const $ = (sel, root = document) => root.querySelector(sel);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[c]));
+const clamp = (v, a = -2, b = 2) => Math.max(a, Math.min(b, v));
+const byKey = k => SPECS.find(s => s.k === k);
+const reduceMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+const COLORS = ["var(--c1)", "var(--c2)", "var(--c3)", "var(--c4)"];
+const SOURCE_LABEL = { gouts: "Les goûts", jeux: "Les jeux", parcours: "Mon parcours" };
+const plural = (n, w) => `${n} ${w}${n > 1 ? "s" : ""}`;
+
+/* ===== Calcul ===== */
+function profileFrom(questions, answers) {
+  return DIMS.map(d => {
+    let num = 0, den = 0;
+    questions.forEach((q, i) => {
+      if (answers[i] == null) return;
+      const max = Math.max(...q.o.map(o => Math.abs(o.eff[d.c] || 0)));
+      if (!max) return;
+      den += q.w * max;
+      num += q.w * (q.o[answers[i]].eff[d.c] || 0);
+    });
+    return den ? 2 * num / den : 0;
+  });
+}
+function distance(S, P) {
+  let num = 0, den = 0;
+  P.forEach((v, k) => { const w = 1 + Math.abs(v) / 2; num += w * (S[k] - v) ** 2; den += w; });
+  return Math.sqrt(num / den);
+}
+/* Affinité = moitié distance (sur un profil étiré pour ne pas favoriser les spécialités « moyennes »),
+   moitié ressemblance de forme (cosinus). Testé : chaque profil de spécialité retrouve sa spécialité en tête. */
+function cosine(a, b) { let x = 0, y = 0, z = 0; a.forEach((v, i) => { x += v * b[i]; y += v * v; z += b[i] * b[i]; }); return y && z ? x / Math.sqrt(y * z) : 0; }
+function stretch(S) { const m = Math.max(...S.map(Math.abs)); return m > 0.25 ? S.map(v => v * 2 / m) : S; }
+const affinity = (S, P) => 0.5 * (100 * (1 - distance(stretch(S), P) / 4)) + 0.5 * (50 * (1 + cosine(S, P)));
+const pole = (d, v) => v < 0 ? d.neg : d.pos;
+function poleWord(d, v) {
+  if (v <= -1.25) return "très " + d.neg.toLowerCase();
+  if (v <= -0.5) return "plutôt " + d.neg.toLowerCase();
+  if (v >= 1.25) return "très " + d.pos.toLowerCase();
+  if (v >= 0.5) return "plutôt " + d.pos.toLowerCase();
+  return "entre les deux";
+}
+function sharedPoles(S, P) {
+  return DIMS.map((d, k) => ({ d, k, gap: Math.abs(S[k] - P[k]), w: Math.abs(P[k]) }))
+    .filter(x => x.w >= 1 && Math.sign(S[x.k]) === Math.sign(P[x.k]) && Math.abs(S[x.k]) >= 0.5 && x.gap <= 1)
+    .sort((a, b) => a.gap - b.gap).slice(0, 2).map(x => pole(x.d, P[x.k]));
+}
+function rank(profile, adjust) {
+  return SPECS.map(s => {
+    const it = { s, score: affinity(profile, s.p), reasons: [] };
+    const sh = sharedPoles(profile, s.p);
+    if (sh.length) it.reasons.push("En commun : " + sh.join(" · "));
+    if (adjust) adjust(it);
+    it.score = Math.max(0, Math.min(100, it.score));
+    return it;
+  }).sort((a, b) => b.score - a.score);
+}
+function familyOf(items) {
+  const top = items.slice(0, 5), counts = {};
+  top.forEach(t => { counts[t.s.f] = (counts[t.s.f] || 0) + 1; });
+  const best = Math.max(...Object.values(counts));
+  return counts[top[0].s.f] === best ? top[0].s.f : Object.keys(counts).find(k => counts[k] === best);
+}
+
+/* ===== État ===== */
+const S = {
+  screen: "home",
+  last: null,
+  compare: ["mg", "mi"],
+  cmpTab: "quot", cmpAll: false, cmpPicker: false,
+  catFam: "all",
+  quiz: null, par: null, game: null, sheet: null
+};
+function save() {
+  try { localStorage.setItem("atlas-v2", JSON.stringify({ last: S.last, compare: S.compare })); } catch (e) {}
+}
+function load() {
+  try {
+    const d = JSON.parse(localStorage.getItem("atlas-v2") || "null");
+    if (d && d.last && d.last.profile) S.last = d.last;
+    if (d && Array.isArray(d.compare) && d.compare.every(byKey)) S.compare = d.compare;
+  } catch (e) {}
+}
+function storeResult(source, profile, ranked, strategy = [], notes = []) {
+  S.last = { source, profile, strategy, notes, ranked: ranked.map(r => ({ k: r.s.k, score: r.score, reasons: r.reasons })) };
+  save();
+  go("results");
+}
+
+/* ===== Navigation ===== */
+let TIMER = null, LATER = null;
+function stopTimers() { if (TIMER) clearInterval(TIMER); if (LATER) clearTimeout(LATER); TIMER = LATER = null; }
+function go(screen) {
+  stopTimers();
+  S.screen = screen;
+  render();
+  window.scrollTo({ top: 0 });
+}
+function render() {
+  $("#view").innerHTML = (VIEWS[S.screen] || VIEWS.home)();
+  document.querySelectorAll(".nav button").forEach(b => {
+    const on = b.dataset.act === S.screen || (b.dataset.act === "home" && ["home", "quiz", "goutsMid", "games", "parcours", "results"].includes(S.screen));
+    b.setAttribute("aria-current", on ? "page" : "false");
+  });
+  if (S.screen === "games") afterGameRender();
+}
+
+/* ===== Vues partagées ===== */
+function dimsYou(profile, spec) {
+  return `<div class="dims">${DIMS.map((d, k) => `
+    <div class="dim">
+      <span class="lab">${esc(d.n)}</span>
+      <div class="track" role="img" aria-label="${esc(d.n)} : toi ${esc(poleWord(d, profile[k]))}${spec ? ", la spécialité " + esc(poleWord(d, spec.p[k])) : ""}">
+        <span class="poles"><span>${esc(d.neg)}</span><span>${esc(d.pos)}</span></span>
+        <span class="line"></span><span class="tick"></span>
+        ${spec ? `<span class="dot ring" style="left:${pct(spec.p[k])}"></span>` : ""}
+        <span class="dot" style="left:${pct(profile[k])}"></span>
+      </div>
+    </div>`).join("")}</div>`;
+}
+const pct = v => ((v + 2) / 4 * 100).toFixed(1) + "%";
+function chips(list) { return list.length ? `<div class="chips">${list.map(x => `<span class="tag">${esc(x)}</span>`).join("")}</div>` : `<p class="muted small">Aucune</p>`; }
+
+/* ===== Accueil ===== */
+const QUIZZES = [
+  { k: "gouts", n: "Les goûts", d: "Films, voyages, objets, petits dilemmes. Aucune question sur la médecine.", m: "24 questions · 8 min" },
+  { k: "jeux", n: "Les jeux", d: "Cinq mini-jeux. On observe ta stratégie, pas tes réponses.", m: "5 jeux · 6 min" },
+  { k: "parcours", n: "Mon parcours", d: "Tes stages, tes limites, tes souvenirs. Le plus personnel des trois.", m: "3 étapes · 5 min" }
+];
+function viewHome() {
+  const L = S.last;
+  return `
+  <section class="hero">
+    <h1>Quelle spé te ressemble&nbsp;?</h1>
+    <p class="lead">Trois façons de le découvrir, sans qu’on te pose jamais la question directement.</p>
+  </section>
+  ${L ? `<button class="resume" data-act="results"><span><span class="kicker">Ton dernier résultat · ${esc(SOURCE_LABEL[L.source])}</span>
+      <b>${esc(FAMILIES[familyOf(L.ranked.map(r => ({ s: byKey(r.k) })))].n)}</b> · ${esc(byKey(L.ranked[0].k).s)} en tête</span><span class="arrow" aria-hidden="true">→</span></button>` : ""}
+  <section class="block">
+    <p class="kicker">Choisis un quiz</p>
+    <div class="rows">${QUIZZES.map(q => `
+      <button class="row" data-act="start" data-arg="${q.k}">
+        <span class="rowmain"><b>${q.n}</b><span class="muted">${q.d}</span></span>
+        <span class="meta">${q.m}</span><span class="arrow" aria-hidden="true">→</span>
+      </button>`).join("")}
+    </div>
+  </section>
+  <section class="block">
+    <p class="kicker">Explorer</p>
+    <div class="rows">
+      <button class="row" data-act="catalog"><span class="rowmain"><b>Les 44 spécialités</b><span class="muted">Le métier et la formation de chaque DES, en une fiche.</span></span><span class="arrow" aria-hidden="true">→</span></button>
+      <button class="row" data-act="compare"><span class="rowmain"><b>Comparer</b><span class="muted">Tu hésites ? Mets 2 à 4 spécialités côte à côte.</span></span><span class="arrow" aria-hidden="true">→</span></button>
+    </div>
+  </section>
+  <p class="foot">Formation : Guide Futur Interne de l’ISNI, 2025-2026. Profils et portraits : premier jet, à valider auprès d’internes.</p>`;
+}
+
+/* ===== Quiz à questions (goûts, souvenirs) ===== */
+function startQuiz(kind) {
+  if (kind === "gouts") {
+    S.quiz = { kind, qs: TASTE.slice(0, 24), answers: [], idx: 0, refined: false };
+    go("quiz");
+  } else if (kind === "jeux") {
+    S.game = { i: -1, d: {} };
+    go("games");
+  } else if (kind === "parcours") {
+    S.par = { step: "stages", stages: {}, years: null, gardes: null, q: "" };
+    go("parcours");
+  }
+}
+function viewQuiz() {
+  const Q = S.quiz, q = Q.qs[Q.idx], n = Q.qs.length;
+  return `<section class="quiz">
+    <div class="qtop">
+      <button class="link" data-act="quizBack">← ${Q.idx ? "Précédente" : "Quitter"}</button>
+      <span class="count">${Q.idx + 1} / ${n}</span>
+    </div>
+    <div class="bar" aria-hidden="true"><i style="width:${(100 * Q.idx / n).toFixed(1)}%"></i></div>
+    <p class="kicker">${esc(Q.kind === "moments" ? "Mon parcours · 3/3 · Tes souvenirs" : q.theme)}</p>
+    <h2 class="qtext">${esc(q.t)}</h2>
+    <div class="opts">${q.o.map((o, k) => `
+      <button class="opt" data-act="ans" data-arg="${k}" aria-pressed="${Q.answers[Q.idx] === k}"><span class="letter">${"ABCDE"[k]}</span><span>${esc(o.text)}</span></button>`).join("")}
+    </div>
+  </section>`;
+}
+function answer(k) {
+  const Q = S.quiz;
+  if (Q.locked) return;
+  Q.locked = true;
+  Q.answers[Q.idx] = k;
+  document.querySelectorAll(".opt").forEach((b, i) => b.setAttribute("aria-pressed", i === k));
+  LATER = setTimeout(() => {
+    Q.locked = false;
+    if (Q.idx + 1 < Q.qs.length) { Q.idx++; render(); }
+    else if (Q.kind === "gouts" && !Q.refined) go("goutsMid");
+    else if (Q.kind === "gouts") finishGouts();
+    else finishParcours();
+  }, reduceMotion() ? 0 : 240);
+}
+function quizBack() {
+  const Q = S.quiz;
+  if (Q.idx > 0) { Q.idx--; render(); return; }
+  if (Q.kind === "moments") { S.par.step = "cons"; go("parcours"); } else go("home");
+}
+function viewGoutsMid() {
+  return `<section class="center">
+    <p class="kicker">Les goûts · 24 questions faites</p>
+    <h2>Tu as déjà fait des stages&nbsp;?</h2>
+    <p class="lead">Dix questions de plus, un peu plus concrètes, affinent le classement. Elles comptent double.</p>
+    <div class="actions">
+      <button class="btn" data-act="refine">Affiner (10 questions)</button>
+      <button class="btn ghost" data-act="goutsDone">Voir mon résultat</button>
+    </div>
+  </section>`;
+}
+function finishGouts() {
+  const Q = S.quiz, profile = profileFrom(Q.qs, Q.answers);
+  storeResult("gouts", profile, rank(profile), [], Q.refined ? [] : ["Résultat sur 24 questions. Les 10 questions de stage affinent le classement."]);
+}
+
+/* ===== Mon parcours ===== */
+const RATINGS = [["love", "Adoré"], ["meh", "Mitigé"], ["no", "Pas pour moi"]];
+function stageChips(q) {
+  const P = S.par, needle = q.trim().toLowerCase();
+  return Object.entries(FAMILIES).map(([fk, f]) => {
+    const list = SPECS.filter(s => s.f === fk && !P.stages[s.k] && (!needle || s.n.toLowerCase().includes(needle) || s.s.toLowerCase().includes(needle)));
+    if (!list.length) return "";
+    return `<div class="famgroup"><span class="kicker">${esc(f.n)}</span><div class="chips">${list.map(s => `<button class="chip" data-act="pAdd" data-arg="${s.k}">+ ${esc(s.s)}</button>`).join("")}</div></div>`;
+  }).join("") || `<p class="muted small">Aucune spécialité ne correspond.</p>`;
+}
+function viewParcours() {
+  const P = S.par;
+  if (P.step === "stages") {
+    const picked = Object.keys(P.stages);
+    return `<section class="block">
+      <div class="qtop"><button class="link" data-act="home">← Quitter</button><span class="count">1 / 3</span></div>
+      <p class="kicker">Mon parcours · Tes stages</p>
+      <h2>Quels stages as-tu faits&nbsp;?</h2>
+      <p class="muted">Ajoute-les, puis dis ce que tu en as pensé. Ils pèsent directement dans le classement.</p>
+      ${picked.length ? `<div class="staged">${picked.map(k => { const s = byKey(k); return `
+        <div class="stagerow">
+          <span class="stagename">${esc(s.s)}</span>
+          <div class="seg" role="group" aria-label="Ton avis sur ${esc(s.s)}">${RATINGS.map(([v, l]) => `<button data-act="pRate" data-arg="${k}|${v}" aria-pressed="${P.stages[k] === v}">${l}</button>`).join("")}</div>
+          <button class="x" data-act="pRm" data-arg="${k}" aria-label="Retirer ${esc(s.s)}">×</button>
+        </div>`; }).join("")}</div>` : ""}
+      <label class="kicker" for="p-search">Ajouter un stage</label>
+      <input class="search" id="p-search" data-input="pSearch" type="search" placeholder="Pédiatrie, urgences, psychiatrie…" autocomplete="off" value="${esc(P.q)}">
+      <div id="p-chips" class="famgroups">${stageChips(P.q)}</div>
+      <div class="actions sticky"><button class="btn" data-act="pNext">${picked.length ? "Continuer" : "Je n’ai pas encore fait de stage"}</button></div>
+    </section>`;
+  }
+  const ok = P.years && P.gardes;
+  return `<section class="block">
+    <div class="qtop"><button class="link" data-act="pBack">← Tes stages</button><span class="count">2 / 3</span></div>
+    <p class="kicker">Mon parcours · Tes limites</p>
+    <h2>Ce que tu es prêt à accepter</h2>
+    <div class="card">
+      <p><b>Combien d’années d’internat acceptes-tu&nbsp;?</b></p>
+      <div class="seg wide" role="group">${[[4, "4 ans au plus"], [5, "5 ans au plus"], [99, "Peu importe"]].map(([v, l]) => `<button data-act="pYears" data-arg="${v}" aria-pressed="${P.years === v}">${l}</button>`).join("")}</div>
+      <p class="muted small">Selon le guide de l’ISNI, les DES durent 4, 5 ou 6 ans.</p>
+    </div>
+    <div class="card">
+      <p><b>Les gardes, sur toute une carrière :</b></p>
+      <div class="seg wide" role="group">${[["love", "J’aime ça"], ["dep", "Ça dépend"], ["no", "Je préfère m’en passer"]].map(([v, l]) => `<button data-act="pGardes" data-arg="${v}" aria-pressed="${P.gardes === v}">${l}</button>`).join("")}</div>
+    </div>
+    <div class="actions"><button class="btn" data-act="pMoments" ${ok ? "" : "disabled"}>Continuer</button></div>
+  </section>`;
+}
+function finishParcours() {
+  const P = S.par, profile = profileFrom(MOMENTS, S.quiz.answers);
+  let excluded = 0;
+  SPECS.forEach(s => { if (s.d > P.years) excluded++; });
+  const ranked = rank(profile, it => {
+    const s = it.s, r = P.stages[s.k];
+    if (r === "love") { it.score += 12; it.reasons.unshift("Stage adoré"); }
+    if (r === "meh") { it.score -= 3; it.reasons.unshift("Stage mitigé"); }
+    if (r === "no") { it.score -= 20; it.reasons.unshift("Stage pas pour toi"); }
+    let near = null;
+    Object.entries(P.stages).forEach(([k, v]) => {
+      const o = byKey(k);
+      if (k === s.k || o.f !== s.f) return;
+      if (v === "love") { it.score += 4; near = near || o.s; }
+      if (v === "no") it.score -= 4;
+    });
+    if (near && !r) it.reasons.push("Même famille que " + near);
+    if (s.d > P.years) { it.score -= 30; it.reasons.push(`${s.d} ans : au-delà de ta limite`); }
+    if (P.gardes === "no" && s.p[0] <= -1) { it.score -= 8; it.reasons.push("Rythme de gardes probable"); }
+    if (P.gardes === "love" && s.p[0] <= -1) { it.score += 5; it.reasons.push("Rythme intense, comme tu aimes"); }
+  });
+  const notes = [];
+  if (excluded) notes.push(`${plural(excluded, "spécialité")} ${excluded > 1 ? "dépassent" : "dépasse"} ta limite de ${P.years} ans d’internat : elles passent en bas du classement.`);
+  if (P.gardes !== "dep") notes.push("L’effet des gardes repose sur notre estimation du rythme de chaque spécialité, pas sur le guide.");
+  storeResult("parcours", profile, ranked, [], notes);
+}
+
+/* ===== Les jeux ===== */
+const GAMES = [
+  { k: "enq", n: "L’enquête", d: "Un tableau a disparu. À toi de décider quand tu en sais assez." },
+  { k: "verger", n: "Le verger", d: "Cueillir maintenant ou laisser mûrir ?" },
+  { k: "atelier", n: "L’atelier", d: "Une épreuve d’adresse, une épreuve de logique, puis un choix." },
+  { k: "lame", n: "La lame", d: "Une cellule n’est pas comme les autres." },
+  { k: "budget", n: "Le budget", d: "Dix jetons, trois besoins, une décision à annoncer." }
+];
+const ENQ = {
+  intro: "Cette nuit, le portrait de la fondatrice a disparu du petit musée de la ville. Quatre personnes avaient accès à l’aile. Retourne les indices que tu veux, puis désigne le coupable quand tu es prêt.",
+  suspects: ["La gardienne", "Le restaurateur", "La conservatrice", "Le stagiaire"],
+  culprit: 1,
+  clues: [
+    "Le vol a eu lieu entre 22 h et minuit.",
+    "Les caméras montrent la gardienne à l’autre bout du musée toute la soirée.",
+    "Le cadre a été démonté proprement, sans aucune trace d’outil forcé.",
+    "La conservatrice dînait en ville avec le maire jusqu’à 1 h du matin.",
+    "Des traces de colle de restauration ont été retrouvées au dos du cadre.",
+    "Le badge du stagiaire n’ouvre pas cette aile du musée."
+  ],
+  obj: ["Trouver le coupable vite", "Ne surtout pas me tromper", "Comprendre toute l’histoire"],
+  next: [["Une affaire classée, sans solution certaine", -2], ["Une affaire courte, avec une solution nette", 2], ["Aucune, une seule me suffit", 0]]
+};
+const VERGER = { rounds: [[15, 2], [12, 1], [20, 4], [30, 8], [11, 1], [25, 6]], obj: ["Le plus de fruits possible", "Ne jamais avoir le panier vide", "Voir le verger grandir"] };
+const SEQ_A = [{ q: "2 · 4 · 8 · 16 · ?", o: ["24", "30", "32", "36"], a: "32" }, { q: "1 · 1 · 2 · 3 · 5 · ?", o: ["7", "8", "9", "10"], a: "8" }, { q: "A · C · F · J · ?", o: ["M", "N", "O", "P"], a: "O" }];
+const SEQ_B = [{ q: "1 · 4 · 9 · 16 · ?", o: ["20", "25", "27", "32"], a: "25" }, { q: "2 · 3 · 5 · 7 · 11 · ?", o: ["12", "13", "14", "15"], a: "13" }, { q: "Z · X · U · Q · ?", o: ["L", "M", "N", "O"], a: "L" }];
+const MISSIONS = [
+  ["Examiner cette cellule au plus fort grossissement", "FOC-2 PRE+1"],
+  ["Balayer toutes les lames du service, une par une", "FOC+1 PRE+2"],
+  ["Rencontrer la personne à qui appartient la lame", "PRE-2 FOC+1 EMO-1"],
+  ["Suivre ce type d’anomalie dans toute une région", "ECH+2 FOC+2"]
+].map(([t, c]) => ({ t, eff: parseEff(c) }));
+const BUDGET = {
+  jars: ["Léa, 8 ans : un traitement rare qui pourrait la guérir", "Un dépistage pour les 10 000 habitants du quartier", "Un logiciel qui libère une heure par jour à chaque équipe soignante"],
+  obj: ["Sauver le plus de vies", "Être juste avec chacun", "Ne pas regretter ma décision"],
+  announce: [["Moi, en personne", "EMO-2 PRE-2"], ["Moi, mais avec l’équipe", "EMO-1 PRE-1"], ["L’équipe qui la suit au quotidien", "EMO+1"], ["Je rédige le rapport, d’autres l’annoncent", "EMO+2 PRE+2"]].map(([t, c]) => ({ t, eff: parseEff(c) }))
+};
+
+function gd(k) { return (S.game.d[k] = S.game.d[k] || {}); }
+function viewGames() {
+  const G = S.game;
+  if (G.i < 0) return `<section class="block">
+    <div class="qtop"><button class="link" data-act="home">← Quitter</button></div>
+    <p class="kicker">Les jeux</p>
+    <h2>Cinq mini-jeux, une minute chacun</h2>
+    <p class="lead">Il n’y a pas de bonne réponse. On observe comment tu joues : ce que tu vises, quand tu décides, ce que tu choisis ensuite.</p>
+    <ol class="steps">${GAMES.map(g => `<li><b>${g.n}</b><span class="muted">${g.d}</span></li>`).join("")}</ol>
+    <div class="actions"><button class="btn" data-act="gStart">Commencer</button></div>
+  </section>`;
+  const g = GAMES[G.i];
+  return `<section class="block game">
+    <div class="qtop"><button class="link" data-act="home">← Quitter</button>
+      <span class="gdots" aria-label="Jeu ${G.i + 1} sur 5">${GAMES.map((_, i) => `<i class="${i < G.i ? "done" : i === G.i ? "on" : ""}"></i>`).join("")}</span></div>
+    <p class="kicker">Jeu ${G.i + 1} / 5</p>
+    <h2>${g.n}</h2>
+    ${GAME_VIEWS[g.k]()}
+  </section>`;
+}
+function objective(k, list, intro) {
+  return `<p class="muted">${intro}</p>
+    <p><b>Avant de commencer : quel est ton objectif&nbsp;?</b></p>
+    <div class="opts">${list.map((t, i) => `<button class="opt" data-act="gObj" data-arg="${k}|${i}"><span class="letter">${"ABC"[i]}</span><span>${esc(t)}</span></button>`).join("")}</div>`;
+}
+function nextGame() {
+  stopTimers();
+  S.game.i++;
+  if (S.game.i >= GAMES.length) finishGames();
+  else { render(); window.scrollTo({ top: 0 }); }
+}
+
+const GAME_VIEWS = {
+  enq() {
+    const d = gd("enq");
+    if (!d.step) return objective("enq", ENQ.obj, "Un vol, quatre suspects, six indices.");
+    if (d.step === "play") return `
+      <p class="muted">${ENQ.intro}</p>
+      <div class="chips">${ENQ.suspects.map(s => `<span class="tag">${s}</span>`).join("")}</div>
+      <div class="clues">${ENQ.clues.map((c, i) => d.rev.includes(i)
+        ? `<div class="clue open"><span class="kicker">Indice ${i + 1}</span><span>${esc(c)}</span></div>`
+        : `<button class="clue" data-act="enqClue" data-arg="${i}"><span class="kicker">Indice ${i + 1}</span><span class="muted">Retourner</span></button>`).join("")}</div>
+      ${d.accusing ? `<div class="card"><p><b>Qui a pris le tableau&nbsp;?</b></p>
+          <div class="opts two">${ENQ.suspects.map((s, i) => `<button class="opt" data-act="enqAccuse" data-arg="${i}"><span>${s}</span></button>`).join("")}</div>
+          <button class="link" data-act="enqCancel">Revoir les indices</button></div>`
+        : `<div class="gfoot"><span class="muted">${d.rev.length} / 6 indices retournés</span><button class="btn" data-act="enqOpen">Désigner le coupable</button></div>`}`;
+    if (d.step === "verdict") {
+      const ok = d.acc === ENQ.culprit;
+      return `<div class="card">
+        <p class="big">${ok ? "Bien vu." : "Mauvaise piste."}</p>
+        <p>C’était le restaurateur : il savait démonter un cadre proprement, et la colle de restauration l’a trahi.</p>
+        <p class="muted">Tu as retourné ${d.rev.length} indice${d.rev.length > 1 ? "s" : ""} sur 6, en ${d.secs} s.</p>
+      </div><div class="actions"><button class="btn" data-act="enqNext">Continuer</button></div>`;
+    }
+    return `<p><b>Une autre affaire t’attend. Laquelle prends-tu&nbsp;?</b></p>
+      <div class="opts">${ENQ.next.map(([t], i) => `<button class="opt" data-act="enqR2" data-arg="${i}"><span class="letter">${"ABC"[i]}</span><span>${t}</span></button>`).join("")}</div>`;
+  },
+  verger() {
+    const d = gd("verger");
+    if (!d.step) return objective("verger", VERGER.obj, "Six récoltes. À chaque fois, tu cueilles tout de suite ou tu laisses mûrir pour en avoir plus, plus tard.");
+    const now = d.picks.reduce((s, p, i) => s + (p === "now" ? 10 : 0), 0);
+    const later = d.picks.reduce((s, p, i) => s + (p === "wait" ? VERGER.rounds[i][0] : 0), 0);
+    if (d.step === "play") {
+      const [m, n] = VERGER.rounds[d.r];
+      return `<div class="basket"><span>Dans ton panier <b class="num">${now}</b></span><span>À venir <b class="num">${later}</b></span><span class="muted">Récolte ${d.r + 1} / 6</span></div>
+        <div class="choice2">
+          <button class="bigchoice" data-act="vPick" data-arg="now"><span class="kicker">Cueillir maintenant</span><b class="num">10</b><span class="muted">fruits tout de suite</span></button>
+          <button class="bigchoice" data-act="vPick" data-arg="wait"><span class="kicker">Laisser mûrir</span><b class="num">${m}</b><span class="muted">fruits dans ${plural(n, "saison")}</span></button>
+        </div>`;
+    }
+    const waits = d.picks.filter(p => p === "wait").length;
+    return `<div class="card"><p class="big">${now + later} fruits au total.</p>
+      <p class="muted">Tu as laissé mûrir ${waits} fois sur 6.</p></div>
+      <div class="actions"><button class="btn" data-act="gNext">Continuer</button></div>`;
+  },
+  atelier() {
+    const d = gd("atelier");
+    const st = d.step || "introA";
+    if (st === "introA") return `<p class="muted">Épreuve 1 · Adresse. Touche la cible autant de fois que possible en 15 secondes. Elle rétrécit à chaque touche.</p>
+      <div class="actions"><button class="btn" data-act="aStart" data-arg="a">Démarrer</button></div>`;
+    if (st === "a" || st === "bonusA") return `<div class="gfoot"><span class="muted">Touches <b class="num" id="hits">0</b></span><span class="num" id="clock">15,0 s</span></div>
+      <div class="arena" id="arena"><button id="target" class="target" data-act="aHit" aria-label="Cible"></button></div>`;
+    if (st === "introB") return `<p class="muted">Épreuve 2 · Logique. Trois suites à compléter, sans limite de temps.</p>
+      <div class="actions"><button class="btn" data-act="aStart" data-arg="b">Démarrer</button></div>`;
+    if (st === "b" || st === "bonusB") {
+      const set = st === "b" ? SEQ_A : SEQ_B, q = set[d.qi];
+      return `<p class="kicker">Suite ${d.qi + 1} / 3</p><p class="seq num">${q.q}</p>
+        ${d.fb ? `<p class="${d.fb.ok ? "good" : "muted"}">${d.fb.ok ? "Juste." : "La réponse était " + q.a + "."}</p>` : ""}
+        <div class="opts four">${q.o.map(o => `<button class="opt center" data-act="aSeq" data-arg="${o}" ${d.fb ? "disabled" : ""}><span class="num">${o}</span></button>`).join("")}</div>`;
+    }
+    if (st === "choice") return `<p><b>Un tour bonus t’est offert. Tu choisis :</b></p>
+      <div class="opts">${[["a", "Encore une épreuve d’adresse"], ["b", "D’autres suites logiques"], ["none", "Je passe mon tour"]].map(([v, t], i) => `<button class="opt" data-act="aChoice" data-arg="${v}"><span class="letter">${"ABC"[i]}</span><span>${t}</span></button>`).join("")}</div>`;
+    return `<div class="card"><p class="big">Atelier terminé.</p><p class="muted">${d.hits} touche${d.hits > 1 ? "s" : ""} en adresse, ${d.good} suite${d.good > 1 ? "s" : ""} juste${d.good > 1 ? "s" : ""} sur 3.</p></div>
+      <div class="actions"><button class="btn" data-act="gNext">Continuer</button></div>`;
+  },
+  lame() {
+    const d = gd("lame");
+    if (!d.step) { d.step = "find"; d.odd = Math.floor(Math.random() * 64); d.t0 = Date.now(); d.miss = 0; }
+    if (d.step === "find") return `<p class="muted">Sous le microscope, une cellule n’est pas comme les autres. Trouve-la.</p>
+      <div class="slide" role="group" aria-label="Lame de 64 cellules">${Array.from({ length: 64 }, (_, i) => {
+        const h = (i * 37 + 11) % 17, sz = 30 + (h % 9), x = 44 + (h % 5) - 2, y = 46 + ((h * 3) % 7) - 3;
+        return `<button class="cell${i === d.odd ? " odd" : ""}" data-act="lCell" data-arg="${i}" style="--s:${i === d.odd ? 50 : sz}%;--x:${x}%;--y:${y}%" aria-label="Cellule ${i + 1}"></button>`;
+      }).join("")}</div>
+      <p class="muted small">${d.miss ? `${plural(d.miss, "essai")} à côté.` : "&nbsp;"}</p>`;
+    if (d.step === "found") return `<div class="card"><p class="big">Trouvée en ${d.secs} s.</p><p class="muted">Son noyau était plus gros et plus irrégulier que les autres.</p></div>
+      <div class="actions"><button class="btn" data-act="lNext">Continuer</button></div>`;
+    return `<p><b>Pour la suite, quelle mission prends-tu&nbsp;?</b></p>
+      <div class="opts">${MISSIONS.map((m, i) => `<button class="opt" data-act="lMission" data-arg="${i}"><span class="letter">${"ABCD"[i]}</span><span>${esc(m.t)}</span></button>`).join("")}</div>`;
+  },
+  budget() {
+    const d = gd("budget");
+    if (!d.step) return objective("budget", BUDGET.obj, "Tu disposes de 10 jetons pour ton hôpital, et trois besoins se disputent l’argent.");
+    if (d.step === "alloc") {
+      const left = 10 - d.tk.reduce((a, b) => a + b, 0);
+      return `<div class="jars">${BUDGET.jars.map((j, i) => `
+        <div class="jar">
+          <span>${esc(j)}</span>
+          <div class="stepper">
+            <button data-act="bMinus" data-arg="${i}" ${d.tk[i] ? "" : "disabled"} aria-label="Retirer un jeton">−</button>
+            <b class="num">${d.tk[i]}</b>
+            <button data-act="bPlus" data-arg="${i}" ${left ? "" : "disabled"} aria-label="Ajouter un jeton">+</button>
+          </div>
+          <span class="pips" aria-hidden="true">${"<i></i>".repeat(d.tk[i])}</span>
+        </div>`).join("")}</div>
+        <div class="gfoot"><span class="muted">Jetons restants <b class="num">${left}</b></span><button class="btn" data-act="bDone" ${left ? "disabled" : ""}>Valider</button></div>`;
+    }
+    return `<p class="muted">Quelle que soit ta répartition, la famille de Léa doit être informée de la décision.</p>
+      <p><b>Qui l’annonce&nbsp;?</b></p>
+      <div class="opts">${BUDGET.announce.map((a, i) => `<button class="opt" data-act="bAnnounce" data-arg="${i}"><span class="letter">${"ABCD"[i]}</span><span>${esc(a.t)}</span></button>`).join("")}</div>`;
+  }
+};
+
+/* Épreuve d’adresse : animée hors rendu */
+function afterGameRender() {
+  const G = S.game;
+  if (G.i < 0 || GAMES[G.i].k !== "atelier") return;
+  const d = gd("atelier");
+  if (d.step !== "a" && d.step !== "bonusA") return;
+  if (TIMER) return;
+  const end = Date.now() + 15000;
+  d.size = 60; d.runHits = 0;
+  placeTarget();
+  TIMER = setInterval(() => {
+    const left = Math.max(0, end - Date.now());
+    const c = $("#clock");
+    if (c) c.textContent = (left / 1000).toFixed(1).replace(".", ",") + " s";
+    if (!left) {
+      stopTimers();
+      if (d.step === "a") { d.hits = d.runHits; d.step = "introB"; }
+      else { d.bonusHits = d.runHits; d.step = "end"; }
+      render();
+    }
+  }, 100);
+}
+function placeTarget() {
+  const d = gd("atelier"), arena = $("#arena"), t = $("#target");
+  if (!arena || !t) return;
+  const w = arena.clientWidth, h = arena.clientHeight, s = d.size;
+  t.style.width = t.style.height = s + "px";
+  t.style.left = Math.round(Math.random() * Math.max(0, w - s)) + "px";
+  t.style.top = Math.round(Math.random() * Math.max(0, h - s)) + "px";
+}
+
+function finishGames() {
+  const D = S.game.d, acc = {};
+  const add = (eff, w = 1) => Object.entries(eff).forEach(([c, v]) => { (acc[c] = acc[c] || []).push([v, w]); });
+  const strat = [];
+  const e = D.enq, v = D.verger, a = D.atelier, l = D.lame, b = D.budget;
+
+  const n = e.rev.length;
+  add({ TEM: clamp((n - 3.5) / 1.25), INC: ENQ.next[e.r2][1] });
+  let read = n <= 2 ? "Tu tranches tôt, à l’intuition." : n >= 5 ? "Tu veux tout voir avant de conclure." : "Tu attends d’avoir une piste solide, sans tout retourner.";
+  if (e.obj === 1 && n <= 2) read = "Tu voulais ne pas te tromper, mais tu as tranché tôt : tu te fies plus à ton intuition que tu ne le penses.";
+  if (e.obj === 0 && n >= 5) read = "Tu voulais aller vite, mais tu as tout retourné : le besoin de certitude a gagné.";
+  strat.push({ g: "L’enquête", obj: ENQ.obj[e.obj], fact: `${n} indice${n > 1 ? "s" : ""} sur 6 avant d’accuser, ${e.acc === ENQ.culprit ? "bonne réponse" : "mauvaise piste"}.`, read });
+
+  const waits = v.picks.filter(p => p === "wait").length;
+  add({ ARC: (waits - 3) * 2 / 3 });
+  strat.push({ g: "Le verger", obj: VERGER.obj[v.obj], fact: `${waits} fois sur 6, tu as laissé mûrir.`,
+    read: waits >= 4 ? "Tu sais attendre une récompense plus grande." : waits <= 2 ? "Tu préfères un résultat tout de suite." : "Tu alternes selon ce qui est proposé." });
+
+  const ch = { a: -2, b: 2, none: 0 }[a.choice];
+  add({ OUT: ch });
+  strat.push({ g: "L’atelier", obj: null, fact: `Pour le tour bonus, tu as choisi ${{ a: "l’adresse", b: "la logique", none: "de passer" }[a.choice]}.`,
+    read: a.choice === "a" ? "Le geste t’attire plus que la réflexion." : a.choice === "b" ? "La réflexion t’attire plus que le geste." : "Ni l’un ni l’autre ne t’a retenu." });
+
+  add(MISSIONS[l.mission].eff);
+  strat.push({ g: "La lame", obj: null, fact: `Anomalie trouvée en ${l.secs} s, puis : « ${MISSIONS[l.mission].t} ».`, read: "" });
+
+  const [lea, dep, log] = b.tk;
+  add({ ECH: clamp((dep + 0.5 * log - lea) / 5), EMO: clamp((3.3 - lea) / 3.3 * 1.5) });
+  add(BUDGET.announce[b.ann].eff);
+  strat.push({ g: "Le budget", obj: BUDGET.obj[b.obj], fact: `${lea} jeton${lea > 1 ? "s" : ""} pour Léa, ${dep} pour le dépistage, ${log} pour le logiciel ; annonce : ${BUDGET.announce[b.ann].t.toLowerCase()}.`,
+    read: lea >= 5 ? "Le visage d’une personne pèse lourd dans tes choix." : dep >= 5 ? "Tu raisonnes à l’échelle du groupe." : "Tu cherches l’équilibre entre les besoins." });
+
+  const profile = DIMS.map(d => {
+    const list = acc[d.c];
+    if (!list) return 0;
+    const sw = list.reduce((s, [, w]) => s + w, 0);
+    return clamp(list.reduce((s, [x, w]) => s + x * w, 0) / sw);
+  });
+  storeResult("jeux", profile, rank(profile), strat, ["Les jeux mesurent chaque dimension à partir d’un ou deux comportements : le résultat est plus contrasté que celui des questions."]);
+}
+
+/* ===== Résultats ===== */
+function viewResults() {
+  const L = S.last;
+  if (!L) return viewHome();
+  const items = L.ranked.map(r => ({ ...r, s: byKey(r.k) }));
+  const fam = FAMILIES[familyOf(items)];
+  const top = items.slice(0, 3), rest = items.slice(3, 10);
+  return `
+  <section class="hero small">
+    <p class="kicker">Résultat · ${esc(SOURCE_LABEL[L.source])}</p>
+    <h1>${esc(fam.n)}</h1>
+    <p class="lead">${esc(fam.d)}</p>
+  </section>
+  ${L.strategy && L.strategy.length ? `<section class="card">
+    <h3>Ta façon de jouer</h3>
+    <ul class="strat">${L.strategy.map(x => `<li><b>${esc(x.g)}</b>${x.obj ? `<span class="muted small">Objectif annoncé : ${esc(x.obj)}</span>` : ""}<span>${esc(x.fact)}</span>${x.read ? `<span class="read">${esc(x.read)}</span>` : ""}</li>`).join("")}</ul>
+  </section>` : ""}
+  <section class="block">
+    <p class="kicker">Les 3 spécialités les plus proches</p>
+    <div class="tops">${top.map((t, i) => `
+      <button class="topcard" data-act="open" data-arg="${t.k}">
+        <span class="rank num">${i + 1}</span>
+        <span class="topmain"><b>${esc(t.s.s)}</b><span class="nick">${esc(t.s.nick)}</span>
+          ${t.reasons.length ? `<span class="reasons">${t.reasons.slice(0, 2).map(r => `<span class="tag">${esc(r)}</span>`).join("")}</span>` : ""}</span>
+        <span class="score"><b class="num">${Math.round(t.score)}</b><span class="muted small">%</span></span>
+      </button>`).join("")}</div>
+    <details class="more"><summary>Voir les places 4 à 10</summary>
+      <div class="rows compact">${rest.map((t, i) => `<button class="row" data-act="open" data-arg="${t.k}"><span class="rowmain"><span><span class="muted num">${i + 4}.</span> ${esc(t.s.s)}</span></span><span class="meta num">${Math.round(t.score)} %</span></button>`).join("")}</div>
+    </details>
+  </section>
+  <section class="card">
+    <h3>Ton empreinte</h3>
+    <p class="muted small">Où tu te situes sur les 8 dimensions qui distinguent les spécialités.</p>
+    ${dimsYou(L.profile)}
+  </section>
+  ${L.notes && L.notes.length ? `<div class="notes">${L.notes.map(n => `<p class="note">${esc(n)}</p>`).join("")}</div>` : ""}
+  <div class="actions">
+    <button class="btn" data-act="cmpTop">Comparer mon top 3</button>
+    <button class="btn ghost" data-act="home">Essayer un autre quiz</button>
+  </div>`;
+}
+
+/* ===== Fiche spécialité ===== */
+function openSheet(k) { S.sheet = { k, tab: "metier" }; renderSheet(); }
+function closeSheet() { S.sheet = null; $("#sheet").hidden = true; document.body.classList.remove("locked"); if (S.sheetFrom) S.sheetFrom.focus(); }
+function renderSheet() {
+  const sh = S.sheet, s = byKey(sh.k), you = S.last && S.last.profile;
+  const tabs = [["metier", "Le métier"], ["formation", "La formation"]].concat(you ? [["toi", "Toi et elle"]] : []);
+  let body = "";
+  if (sh.tab === "metier") body = `<dl class="facts">
+      <dt>Au quotidien</dt><dd>${esc(s.quot)}</dd>
+      <dt>Ce qui rend heureux</dt><dd>${esc(s.heur)}</dd>
+      <dt>L’envers du décor</dt><dd>${esc(s.envers)}</dd>
+      <dt>Idée reçue</dt><dd>${esc(s.idee)}</dd></dl>`;
+  if (sh.tab === "formation") body = `
+      <div class="kv"><span>Durée</span><b>${s.d} ans</b></div>
+      ${s.co ? `<div class="kv"><span>Co-DES avec</span><b>${esc(s.co)}</b></div>` : ""}
+      <div class="kv col"><span>Options</span>${chips(s.opt)}</div>
+      <div class="kv col"><span>Formations spécialisées transversales</span>${chips(s.fst)}</div>
+      <div class="kv col"><span>Selon le guide de l’ISNI</span><ul class="guide">${s.g.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>
+      <p class="muted small">Source : Guide Futur Interne ISNI 2025-2026, résumé et reformulé.</p>`;
+  if (sh.tab === "toi") body = `<div class="legend"><span><i class="dot"></i>Toi</span><span><i class="dot ring"></i>${esc(s.s)}</span>
+      <span class="muted">${Math.round(affinity(you, s.p))} % d’affinité</span></div>${dimsYou(you, s)}`;
+  const inCmp = S.compare.includes(s.k);
+  $("#sheet-panel").innerHTML = `
+    <div class="sheethead">
+      <div><p class="kicker">${esc(FAMILIES[s.f].n)} · ${s.d} ans</p><h2 id="sheet-title">${esc(s.n)}</h2><p class="nick">${esc(s.nick)}</p></div>
+      <button class="x big" data-act="closeSheet" aria-label="Fermer">×</button>
+    </div>
+    <div class="tabs" role="tablist">${tabs.map(([v, l]) => `<button role="tab" data-act="sheetTab" data-arg="${v}" aria-selected="${sh.tab === v}">${l}</button>`).join("")}</div>
+    <div class="sheetbody">${body}</div>
+    <div class="actions"><button class="btn ${inCmp ? "ghost" : ""}" data-act="sheetCmp" data-arg="${s.k}">${inCmp ? "Ouvrir le comparateur" : "Ajouter au comparateur"}</button></div>`;
+  const el = $("#sheet");
+  if (el.hidden) { el.hidden = false; document.body.classList.add("locked"); S.sheetFrom = document.activeElement; $("#sheet-panel").focus(); }
+}
+
+/* ===== Catalogue ===== */
+function catalogRows() {
+  const q = ($("#c-search") ? $("#c-search").value : "").trim().toLowerCase();
+  return Object.entries(FAMILIES).filter(([fk]) => S.catFam === "all" || S.catFam === fk).map(([fk, f]) => {
+    const list = SPECS.filter(s => s.f === fk && (!q || s.n.toLowerCase().includes(q) || s.s.toLowerCase().includes(q) || s.nick.toLowerCase().includes(q)))
+      .sort((a, b) => a.s.localeCompare(b.s, "fr"));
+    if (!list.length) return "";
+    return `<div class="famblock"><p class="kicker">${esc(f.n)}</p><div class="rows compact">${list.map(s => `
+      <button class="row" data-act="open" data-arg="${s.k}"><span class="rowmain"><b>${esc(s.s)}</b><span class="muted">${esc(s.nick)}</span></span><span class="meta num">${s.d} ans</span><span class="arrow" aria-hidden="true">→</span></button>`).join("")}</div></div>`;
+  }).join("") || `<p class="muted">Aucune spécialité ne correspond.</p>`;
+}
+function viewCatalog() {
+  return `<section class="hero small"><p class="kicker">Explorer</p><h1>Les 44 spécialités</h1>
+    <p class="lead">Une fiche par DES : le métier, la formation, et ta proximité si tu as fait un quiz.</p></section>
+  <input class="search" id="c-search" data-input="catSearch" type="search" placeholder="Rechercher une spécialité" autocomplete="off" aria-label="Rechercher une spécialité">
+  <div class="filters" role="group" aria-label="Filtrer par famille">${[["all", "Toutes"]].concat(Object.entries(FAMILIES).map(([k, f]) => [k, f.n.replace("Les ", "")])).map(([k, l]) => `<button class="chip" data-act="catFam" data-arg="${k}" aria-pressed="${S.catFam === k}">${esc(l)}</button>`).join("")}</div>
+  <div id="c-list">${catalogRows()}</div>`;
+}
+
+/* ===== Comparateur ===== */
+const CMP_TABS = [["quot", "Au quotidien"], ["heur", "Ce qui rend heureux"], ["envers", "L’envers"], ["idee", "Idée reçue"], ["g", "Selon le guide"]];
+function pickerList() {
+  const q = ($("#k-search") ? $("#k-search").value : "").trim().toLowerCase();
+  const full = S.compare.length >= 4;
+  return Object.entries(FAMILIES).map(([fk, f]) => {
+    const list = SPECS.filter(s => s.f === fk && (!q || s.n.toLowerCase().includes(q) || s.s.toLowerCase().includes(q)));
+    if (!list.length) return "";
+    return `<div class="famgroup"><span class="kicker">${esc(f.n)}</span><div class="chips">${list.map(s => {
+      const on = S.compare.includes(s.k);
+      return `<button class="chip" data-act="cmpToggle" data-arg="${s.k}" aria-pressed="${on}" ${!on && full ? "disabled" : ""}>${esc(s.s)}</button>`;
+    }).join("")}</div></div>`;
+  }).join("");
+}
+function lanes(specs, k, you) {
+  return `<div class="lanes" role="img" aria-label="${esc(DIMS[k].n)} : ${specs.map(s => esc(s.s) + " " + esc(poleWord(DIMS[k], s.p[k]))).join(", ")}${you ? ", toi " + esc(poleWord(DIMS[k], you[k])) : ""}">
+    <span class="poles"><span>${esc(DIMS[k].neg)}</span><span>${esc(DIMS[k].pos)}</span></span>
+    ${specs.map((s, i) => `<span class="lane"><span class="dot" style="left:${pct(s.p[k])};background:${COLORS[i]}"></span></span>`).join("")}
+    ${you ? `<span class="you" style="left:${pct(you[k])}"></span>` : ""}
+  </div>`;
+}
+function viewCompare() {
+  const specs = S.compare.map(byKey), you = S.last && S.last.profile;
+  const head = `<section class="hero small"><p class="kicker">Comparer</p><h1>Tu hésites&nbsp;?</h1>
+    <p class="lead">Choisis de 2 à 4 spécialités : on montre d’abord ce qui les sépare, le détail se déplie à la demande.</p></section>
+  <div class="picked">${specs.map((s, i) => `<span class="pchip" style="--c:${COLORS[i]}"><i class="dot" style="background:${COLORS[i]}"></i>${esc(s.s)}<button class="x" data-act="cmpToggle" data-arg="${s.k}" aria-label="Retirer ${esc(s.s)}">×</button></span>`).join("")}
+    ${specs.length < 4 ? `<button class="chip add" data-act="cmpPicker" aria-expanded="${S.cmpPicker}">+ Ajouter</button>` : ""}</div>
+  ${S.cmpPicker ? `<div class="card picker"><input class="search" id="k-search" data-input="cmpSearch" type="search" placeholder="Rechercher" autocomplete="off" aria-label="Rechercher une spécialité"><div id="k-list" class="famgroups">${pickerList()}</div>
+    <button class="link" data-act="cmpPicker">Fermer la liste</button></div>` : ""}`;
+  if (specs.length < 2) return head + `<p class="empty">Ajoute au moins une autre spécialité pour comparer.</p>`;
+
+  const stats = DIMS.map((d, k) => { const v = specs.map(s => s.p[k]); return { d, k, spread: Math.max(...v) - Math.min(...v) }; }).sort((a, b) => b.spread - a.spread);
+  const shown = S.cmpAll ? stats : stats.slice(0, 3);
+  const common = stats.filter(x => x.spread <= 1).map(x => x.d.n.toLowerCase());
+  let lean = "";
+  if (you) {
+    const r = specs.map((s, i) => ({ s, i, a: affinity(you, s.p) })).sort((a, b) => b.a - a.a);
+    lean = `<p>Ton profil (${esc(SOURCE_LABEL[S.last.source])}) penche vers <b style="color:${COLORS[r[0].i]}">${esc(r[0].s.s)}</b> : ${r.map(x => `${esc(x.s.s)} ${Math.round(x.a)} %`).join(" · ")}.</p>`;
+  }
+  const facts = [
+    ["Famille", s => FAMILIES[s.f].n.replace("Les ", "")],
+    ["Durée", s => s.d + " ans"],
+    ["Co-DES", s => s.co || "—"],
+    ["Options", s => s.opt.length ? s.opt.join(", ") : "—"]
+  ];
+  const tab = S.cmpTab;
+  return head + `
+  <section class="card">
+    <h3>En un coup d’œil</h3>
+    <div class="scrollx"><table class="glance"><thead><tr><th></th>${specs.map((s, i) => `<th style="color:${COLORS[i]}">${esc(s.s)}</th>`).join("")}</tr></thead>
+      <tbody>${facts.map(([l, f]) => `<tr><th scope="row">${l}</th>${specs.map(s => `<td>${esc(f(s))}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
+  </section>
+  <section class="card">
+    <h3>Ce qui les sépare</h3>
+    ${lean}
+    <div class="legend">${specs.map((s, i) => `<span><i class="dot" style="background:${COLORS[i]}"></i>${esc(s.s)}</span>`).join("")}${you ? `<span><i class="youkey"></i>Toi</span>` : ""}</div>
+    <div class="dimlist">${shown.map(x => `<div class="cdim"><b>${esc(x.d.n)}</b>${lanes(specs, x.k, you)}</div>`).join("")}</div>
+    ${common.length && !S.cmpAll ? `<p class="muted small">Proches sur : ${esc(common.join(", "))}.</p>` : ""}
+    <button class="link" data-act="cmpAll">${S.cmpAll ? "Ne montrer que l’essentiel" : "Voir les 8 dimensions"}</button>
+  </section>
+  <section class="card">
+    <h3>Le métier côte à côte</h3>
+    <div class="tabs scroll" role="tablist">${CMP_TABS.map(([v, l]) => `<button role="tab" data-act="cmpTab" data-arg="${v}" aria-selected="${tab === v}">${l}</button>`).join("")}</div>
+    <div class="cols n${specs.length}">${specs.map((s, i) => `<div class="colitem"><b style="color:${COLORS[i]}">${esc(s.s)}</b>${tab === "g" ? `<ul class="guide">${s.g.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : `<p>${esc(s[tab])}</p>`}</div>`).join("")}</div>
+  </section>`;
+}
+
+/* ===== Actions ===== */
+const ACT = {
+  home: () => go("home"), catalog: () => go("catalog"), compare: () => go("compare"), results: () => go(S.last ? "results" : "home"),
+  start: k => startQuiz(k),
+  ans: k => answer(Number(k)),
+  quizBack,
+  refine: () => { const Q = S.quiz; Q.refined = true; Q.qs = TASTE.slice(); Q.idx = 24; go("quiz"); },
+  goutsDone: () => finishGouts(),
+  open: k => openSheet(k),
+  closeSheet,
+  sheetTab: t => { S.sheet.tab = t; renderSheet(); },
+  sheetCmp: k => { if (!S.compare.includes(k)) S.compare = S.compare.length >= 4 ? [...S.compare.slice(1), k] : [...S.compare, k]; save(); closeSheet(); go("compare"); },
+  cmpTop: () => { S.compare = S.last.ranked.slice(0, 3).map(r => r.k); save(); go("compare"); },
+  cmpToggle: k => {
+    const q = $("#k-search") ? $("#k-search").value : "";
+    S.compare = S.compare.includes(k) ? S.compare.filter(x => x !== k) : S.compare.length < 4 ? [...S.compare, k] : S.compare;
+    save(); render();
+    if (q && $("#k-search")) { $("#k-search").value = q; $("#k-list").innerHTML = pickerList(); }
+  },
+  cmpPicker: () => { S.cmpPicker = !S.cmpPicker; render(); if (S.cmpPicker) $("#k-search").focus(); },
+  cmpAll: () => { S.cmpAll = !S.cmpAll; render(); },
+  cmpTab: t => { S.cmpTab = t; render(); },
+  catFam: k => { const q = $("#c-search").value; S.catFam = k; render(); $("#c-search").value = q; $("#c-list").innerHTML = catalogRows(); },
+  /* parcours */
+  pAdd: k => { S.par.stages[k] = "meh"; S.par.q = ""; render(); },
+  pRm: k => { delete S.par.stages[k]; render(); },
+  pRate: arg => { const [k, v] = arg.split("|"); S.par.stages[k] = v; render(); },
+  pNext: () => { S.par.step = "cons"; go("parcours"); },
+  pBack: () => { S.par.step = "stages"; go("parcours"); },
+  pYears: v => { S.par.years = Number(v); render(); },
+  pGardes: v => { S.par.gardes = v; render(); },
+  pMoments: () => { S.quiz = { kind: "moments", qs: MOMENTS, answers: [], idx: 0 }; go("quiz"); },
+  /* jeux */
+  gStart: () => { S.game.i = 0; render(); },
+  gNext: () => nextGame(),
+  gObj: arg => {
+    const [k, i] = arg.split("|"), d = gd(k);
+    d.obj = Number(i);
+    if (k === "enq") { d.step = "play"; d.rev = []; d.t0 = Date.now(); }
+    if (k === "verger") { d.step = "play"; d.r = 0; d.picks = []; }
+    if (k === "budget") { d.step = "alloc"; d.tk = [0, 0, 0]; }
+    render();
+  },
+  enqClue: i => { const d = gd("enq"); if (!d.rev.includes(+i)) d.rev.push(+i); render(); },
+  enqOpen: () => { gd("enq").accusing = true; render(); },
+  enqCancel: () => { gd("enq").accusing = false; render(); },
+  enqAccuse: i => { const d = gd("enq"); d.acc = +i; d.secs = Math.round((Date.now() - d.t0) / 1000); d.step = "verdict"; render(); },
+  enqNext: () => { gd("enq").step = "r2"; render(); },
+  enqR2: i => { gd("enq").r2 = +i; nextGame(); },
+  vPick: p => { const d = gd("verger"); d.picks.push(p); d.r++; if (d.r >= VERGER.rounds.length) d.step = "end"; render(); },
+  aStart: w => { const d = gd("atelier"); if (w === "a") d.step = "a"; else { d.step = "b"; d.qi = 0; d.good = 0; d.fb = null; } stopTimers(); render(); },
+  aHit: () => { const d = gd("atelier"); d.runHits++; d.size = Math.max(22, d.size - 3); const h = $("#hits"); if (h) h.textContent = d.runHits; placeTarget(); },
+  aSeq: o => {
+    const d = gd("atelier"), set = d.step === "b" ? SEQ_A : SEQ_B, q = set[d.qi], ok = o === q.a;
+    if (d.step === "b" && ok) d.good++;
+    d.fb = { ok };
+    render();
+    LATER = setTimeout(() => {
+      d.fb = null; d.qi++;
+      if (d.qi >= 3) d.step = d.step === "b" ? "choice" : "end";
+      render();
+    }, reduceMotion() ? 300 : 800);
+  },
+  aChoice: c => { const d = gd("atelier"); d.choice = c; if (c === "a") d.step = "bonusA"; else if (c === "b") { d.step = "bonusB"; d.qi = 0; d.fb = null; } else d.step = "end"; render(); },
+  lCell: i => { const d = gd("lame"); if (+i === d.odd) { d.secs = Math.max(1, Math.round((Date.now() - d.t0) / 1000)); d.step = "found"; } else d.miss++; render(); },
+  lNext: () => { gd("lame").step = "mission"; render(); },
+  lMission: i => { gd("lame").mission = +i; nextGame(); },
+  bPlus: i => { const d = gd("budget"); if (d.tk.reduce((a, b) => a + b, 0) < 10) d.tk[+i]++; render(); },
+  bMinus: i => { const d = gd("budget"); if (d.tk[+i]) d.tk[+i]--; render(); },
+  bDone: () => { gd("budget").step = "announce"; render(); },
+  bAnnounce: i => { gd("budget").ann = +i; nextGame(); }
+};
+const INPUT = {
+  pSearch: v => { S.par.q = v; $("#p-chips").innerHTML = stageChips(v); },
+  catSearch: () => { $("#c-list").innerHTML = catalogRows(); },
+  cmpSearch: () => { $("#k-list").innerHTML = pickerList(); }
+};
+const VIEWS = { home: viewHome, quiz: viewQuiz, goutsMid: viewGoutsMid, parcours: viewParcours, games: viewGames, results: viewResults, catalog: viewCatalog, compare: viewCompare };
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-act]");
+  if (b && !b.disabled && ACT[b.dataset.act]) { ACT[b.dataset.act](b.dataset.arg, b); return; }
+  if (e.target.id === "sheet") closeSheet();
+});
+document.addEventListener("input", e => { const f = e.target.dataset && e.target.dataset.input; if (f && INPUT[f]) INPUT[f](e.target.value); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && S.sheet) closeSheet(); });
+
+load();
+render();
+
+</script>
+
+</body></html>
