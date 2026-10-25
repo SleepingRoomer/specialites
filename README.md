@@ -1,4 +1,4 @@
-# Atlas des spés
+# Quelle spé est faite pour moi ?
 
 Pour choisir sa spécialité : un questionnaire, un comparateur et une fiche par spécialité. Projet de Sleeping Room (pédagogie médicale).
 
